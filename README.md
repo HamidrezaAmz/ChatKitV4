@@ -27,3 +27,17 @@ dependencies {
     implementation 'com.github.HamidrezaAmz:ChatKitV4:{latest version}'
 }
 ```
+
+## Usage
+
+Before you start using ChatKitV4, you should initialize It's view-model factory in this way:
+
+```bash
+chatKitV4ViewModel = ViewModelProvider(
+            this,
+            ChatKitV4ViewModelFactory(
+                application = application,
+                chatId = PublicValue.CHAT_ID // any chat Id you need, this will help to use ChatKitV4 on seprate chat views
+            )
+        ).get(ChatKitV4ViewModel::class.java)
+```
