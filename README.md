@@ -12,9 +12,9 @@ Add it in your root build.gradle at the end of repositories:
 
 ```bash
 allprojects {
-		repositories {
-			...
-			maven { url 'https://www.jitpack.io' }
-		}
-	}
+        repositories {
+            ...
+            maven { url 'https://www.jitpack.io' }
+        }
+    }
 ```
