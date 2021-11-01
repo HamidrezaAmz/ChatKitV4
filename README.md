@@ -1,4 +1,4 @@
-# ChatKitV4
+# ChatKitV4 (THIS READ ME IS UNDER DEVELOP)
 This is our new version of chatkit.
 
 Here we seprate **Core Logic** and **UI** sections. You can use it as seprate module into your applications. **ChatKitV4** can support all issues and needs related 
