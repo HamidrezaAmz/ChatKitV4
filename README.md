@@ -45,8 +45,8 @@ var chatKitV4ViewModel = ViewModelProvider(this, ChatKitV4ViewModelFactory(
 We have impelement some interfaces to receive use intractions with chat view and chat messages. If you need to use them, you can use it in this way:
 
 ```bash
-        chatKitV4.initializeChatKitV4ListCallback(this)
-        chatKitV4.initializeChatKitV4InputCallback(this)
+chatKitV4.initializeChatKitV4ListCallback(this)
+chatKitV4.initializeChatKitV4InputCallback(this)
 ```
 
 
