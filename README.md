@@ -33,11 +33,12 @@ dependencies {
 Before you start using ChatKitV4, you should initialize It's view-model factory in this way:
 
 ```bash
-chatKitV4ViewModel = ViewModelProvider(
-            this,
-            ChatKitV4ViewModelFactory(
+chatKitV4ViewModel = ViewModelProvider(this, ChatKitV4ViewModelFactory(
                 application = application,
-                chatId = PublicValue.CHAT_ID // any chat Id you need, this will help to use ChatKitV4 on seprate chat views
+                chatId = PublicValue.CHAT_ID
             )
         ).get(ChatKitV4ViewModel::class.java)
 ```
+#### Note: CHAT_ID is a string hash used as Id, this will help us to seprate chats and use this library on more than one chat view
+
+
