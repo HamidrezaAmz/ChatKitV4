@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_20dp"
+    android:layoutDirection="ltr">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="@dimen/max_width_message"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:background="@color/teal"
+        android:padding="@dimen/padding_12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_min="@dimen/min_width_message">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/app_font"
+            android:gravity="end"
+            android:maxLength="20"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="250dp"
+            app:layout_constraintWidth_min="50dp"
+            tools:text="John Doe" />
+
+        <SeekBar
+            android:id="@id/sb_voice"
+            android:layout_width="@dimen/max_width_progressbar"
+            android:layout_height="wrap_content"
+            android:max="100"
+            android:progress="0"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@id/ib_play_pause"
+            android:layout_width="@dimen/height_50dp"
+            android:layout_height="@dimen/height_50dp"
+            android:layout_marginEnd="@dimen/margin_18dp"
+            android:background="@drawable/ic_baseline_play_arrow_24"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:layout_constraintBottom_toBottomOf="@id/sb_voice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/sb_voice" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@id/tv_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/app_font"
+            android:text="00:00"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="@id/sb_voice"
+            app:layout_constraintTop_toBottomOf="@id/sb_voice" />
+
+        <ProgressBar
+            android:id="@id/pb_download"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_margin="@dimen/margin_8dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/tv_timer"
+            app:layout_constraintStart_toEndOf="@id/tv_timer"
+            app:layout_constraintTop_toTopOf="@id/tv_timer" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

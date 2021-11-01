@@ -1,0 +1,5 @@
+<resources>
+    <string name="sample_title">Lorem ipsum is placeholder</string>
+    <string name="sample_sub_title">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups</string>
+    <string name="title_chatkitv4_input_edittext_hint">Send message</string>
+</resources>

@@ -1,0 +1,64 @@
+<resources>
+
+    <!--  TEXT SIZE  -->
+    <dimen name="text_size_x_small_10">10sp</dimen>
+    <dimen name="text_size_small_12">12sp</dimen>
+    <dimen name="text_size_medium_14">14sp</dimen>
+    <dimen name="text_size_large_16">16sp</dimen>
+    <dimen name="text_size_large_18">18sp</dimen>
+    <dimen name="text_size_x_large_20">20sp</dimen>
+    <dimen name="text_size_xx_large_24">24sp</dimen>
+    <dimen name="text_size_xxx_large_28">28sp</dimen>
+
+    <!--  PADDING  -->
+    <dimen name="padding_4dp">4dp</dimen>
+    <dimen name="padding_8dp">8dp</dimen>
+    <dimen name="padding_12dp">12dp</dimen>
+    <dimen name="padding_16dp">16dp</dimen>
+    <dimen name="padding_20dp">20dp</dimen>
+    <dimen name="padding_30dp">30dp</dimen>
+    <dimen name="padding_40dp">40dp</dimen>
+    <dimen name="padding_50dp">50dp</dimen>
+    <dimen name="padding_60dp">60dp</dimen>
+    <dimen name="padding_70dp">70dp</dimen>
+    <dimen name="padding_80dp">80dp</dimen>
+
+    <!--  MARGIN  -->
+    <dimen name="margin_4dp">4dp</dimen>
+    <dimen name="margin_8dp">8dp</dimen>
+    <dimen name="margin_12dp">12dp</dimen>
+    <dimen name="margin_14dp">14dp</dimen>
+    <dimen name="margin_16dp">16dp</dimen>
+    <dimen name="margin_18dp">18dp</dimen>
+    <dimen name="margin_20dp">20dp</dimen>
+    <dimen name="margin_25dp">25dp</dimen>
+    <dimen name="margin_30dp">30dp</dimen>
+    <dimen name="margin_40dp">40dp</dimen>
+    <dimen name="margin_50dp">50dp</dimen>
+    <dimen name="margin_60dp">60dp</dimen>
+    <dimen name="margin_70dp">70dp</dimen>
+    <dimen name="margin_80dp">80dp</dimen>
+
+    <!--  RADIUS  -->
+    <dimen name="radius_small_2">2dp</dimen>
+    <dimen name="radius_small_5">5dp</dimen>
+    <dimen name="radius_medium_10">10dp</dimen>
+    <dimen name="radius_medium_11">11dp</dimen>
+    <dimen name="radius_large_15">15dp</dimen>
+
+    <!--  HEIGHT  -->
+    <dimen name="height_10dp">10dp</dimen>
+    <dimen name="height_20dp">20dp</dimen>
+    <dimen name="height_30dp">30dp</dimen>
+    <dimen name="height_40dp">40dp</dimen>
+    <dimen name="height_50dp">50dp</dimen>
+    <dimen name="height_60dp">60dp</dimen>
+    <dimen name="height_70dp">70dp</dimen>
+    <dimen name="height_80dp">80dp</dimen>
+
+    <!--  WIDTH  -->
+    <dimen name="min_width_message">50dp</dimen>
+    <dimen name="max_width_message">250dp</dimen>
+    <dimen name="max_width_progressbar">150dp</dimen>
+
+</resources>

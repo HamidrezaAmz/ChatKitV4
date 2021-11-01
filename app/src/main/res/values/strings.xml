@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">ChatKitV4</string>
+    <string name="chatkitv4_input_hint">Send Message</string>
+</resources>

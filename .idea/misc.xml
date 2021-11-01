@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="ChatKitV4Core/src/main/res/drawable/ic_baseline_attachment_24.xml" value="0.28888888888888886" />
+        <entry key="ChatKitV4Core/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.27685185185185185" />
+        <entry key="ChatKitV4Core/src/main/res/drawable/shape_other_bubble.xml" value="0.287962962962963" />
+        <entry key="ChatKitV4Core/src/main/res/drawable/shape_other_bubble_temp.xml" value="0.2948717948717949" />
+        <entry key="ChatKitV4Core/src/main/res/font/app_font.xml" value="0.25277777777777777" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_not_supported_bubble.xml" value="0.2833333333333333" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_other_bubble.xml" value="0.2833333333333333" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_other_voice_bubble.xml" value="0.2212962962962963" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_other_voice_layout.xml" value="0.2833333333333333" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_self_bubble.xml" value="0.2" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_self_text_bubble.xml" value="0.29791666666666666" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_self_voice_bubble.xml" value="0.25" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_self_voice_layout.xml" value="0.24537037037037038" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_system_bubble.xml" value="0.29791666666666666" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_system_layout.xml" value="0.29791666666666666" />
+        <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4.xml" value="0.25" />
+        <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4_input.xml" value="0.22037037037037038" />
+        <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4_item_bot_message.xml" value="0.17314814814814813" />
+        <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4_item_client_message.xml" value="0.21481481481481482" />
+        <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4_item_message.xml" value="0.2833333333333333" />
+        <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4_item_server_message.xml" value="0.22592592592592592" />
+        <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4_list.xml" value="0.21574074074074073" />
+        <entry key="ChatKitV4Core/src/main/res/layout/layout_item_message.xml" value="0.2833333333333333" />
+        <entry key="ChatKitV4Core/src/main/res/layout/view_load_state_adapter.xml" value="0.2833333333333333" />
+        <entry key="ChatKitV4Core/src/main/res/layout/view_load_states_empty.xml" value="0.2833333333333333" />
+        <entry key="ChatKitV4Core/src/main/res/layout/view_load_states_error.xml" value="0.2833333333333333" />
+        <entry key="app/src/main/res/drawable/border_shadow.xml" value="0.2948717948717949" />
+        <entry key="app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/drawable/seekbar_progress.xml" value="0.2948717948717949" />
+        <entry key="app/src/main/res/drawable/seekbar_style.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/drawable/selector_other.xml" value="0.2948717948717949" />
+        <entry key="app/src/main/res/drawable/selector_self.xml" value="0.28888888888888886" />
+        <entry key="app/src/main/res/drawable/shape_circle.xml" value="0.2601851851851852" />
+        <entry key="app/src/main/res/drawable/shape_other_bubble.xml" value="0.2740740740740741" />
+        <entry key="app/src/main/res/drawable/shape_other_bubble_selected.xml" value="0.2948717948717949" />
+        <entry key="app/src/main/res/drawable/shape_rectangle_round_corner.xml" value="0.26481481481481484" />
+        <entry key="app/src/main/res/drawable/shape_rectangle_rounded_corners.xml" value="0.27685185185185185" />
+        <entry key="app/src/main/res/drawable/shape_round_with_shadow.xml" value="0.24259259259259258" />
+        <entry key="app/src/main/res/drawable/shape_self_bubble.xml" value="0.29074074074074074" />
+        <entry key="app/src/main/res/drawable/shape_self_bubble_selected.xml" value="0.28888888888888886" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2838541666666667" />
+        <entry key="app/src/main/res/layout/other_bubble.xml" value="0.2833333333333333" />
+        <entry key="app/src/main/res/layout/other_text_layout.xml" value="0.29791666666666666" />
+        <entry key="app/src/main/res/layout/other_voice_layout.xml" value="0.2833333333333333" />
+        <entry key="app/src/main/res/layout/self_bubble.xml" value="0.2361111111111111" />
+        <entry key="app/src/main/res/layout/self_text_layout.xml" value="0.29791666666666666" />
+        <entry key="app/src/main/res/layout/self_voice_layout.xml" value="0.375" />
+        <entry key="app/src/main/res/menu/main_menu.xml" value="0.2833333333333333" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2657407407407407" />
+        <entry key="chatkitv4sdk/src/main/res/layout/layout_chatkit_v4.xml" value="0.2833333333333333" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

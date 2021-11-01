@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">ChatKitV4</string>
+    <string name="chatkitv4_input_hint">ارسال پیام</string>
+</resources>

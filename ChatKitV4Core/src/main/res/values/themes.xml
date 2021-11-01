@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="ChatKitV4.Theme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="self_text_layout_id">@layout/defaul_self_text_layout</item>
+        <item name="self_voice_layout_id">@layout/defaul_self_voice_layout</item>
+        <item name="other_text_layout_id">@layout/defaul_other_text_layout</item>
+        <item name="system_text_layout_id">@layout/defaul_system_text_layout</item>
+        <item name="chatkitv4_input_background">@color/default_input_background</item>
+        <item name="chatkitv4_input_send_button_icon">@drawable/ic_default_baseline_send_24</item>
+        <item name="chatkitv4_input_send_button_background">@color/default_input_send_background</item>
+        <item name="chatkitv4_input_attachment_icon">@drawable/ic_baseline_attachment_24</item>
+        <item name="chatkitv4_input_edittext_background">@color/default_input_send_background</item>
+        <item name="chatkitv4_input_edittext_hint">@string/title_chatkitv4_input_edittext_hint</item>
+    </style>
+
+</resources>

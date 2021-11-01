@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/margin_20dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="@color/gray"
+        android:padding="@dimen/padding_12dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/app_font"
+            android:gravity="start"
+            android:textColor="@color/white"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_max="250dp"
+            app:layout_constraintWidth_min="50dp"
+            tools:text="Warning!" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@id/tv_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_title"
+            android:fontFamily="@font/app_font"
+            android:gravity="start"
+            android:textColor="@color/white"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_title"
+            app:layout_constraintWidth_max="@dimen/max_width_message"
+            app:layout_constraintWidth_min="@dimen/min_width_message"
+            tools:text="This view type is not supported! Please check your input and sync with library documents" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/iv_download"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_below="@id/tv_message"
+            android:padding="10dp"
+            android:src="@android:drawable/stat_sys_download"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_message" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>
