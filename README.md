@@ -38,6 +38,7 @@ var chatKitV4ViewModel = ViewModelProvider(this, ChatKitV4ViewModelFactory(
                 chatId = PublicValue.CHAT_ID
             )
         ).get(ChatKitV4ViewModel::class.java)
+chatKitV4.initializeChatKitV4ViewModel(chatKitV4ViewModel)
 ```
 #### Note: CHAT_ID is a string hash used as Id, this will help us to seprate chats and use this library on more than one chat view
 
