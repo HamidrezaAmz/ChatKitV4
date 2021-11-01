@@ -19,3 +19,11 @@ allprojects {
         }
     }
 ```
+
+Step 2. Add the dependency
+
+```bash
+dependencies {
+    implementation 'com.github.HamidrezaAmz:ChatKitV4:last_version'
+}
+```
