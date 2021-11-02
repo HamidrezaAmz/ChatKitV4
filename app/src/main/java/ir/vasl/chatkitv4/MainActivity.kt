@@ -106,9 +106,7 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
 
     private fun initializeChatKitV4() {
 
-        chatKitV4ViewModel = ViewModelProvider(
-            this,
-            ChatKitV4ViewModelFactory(
+        chatKitV4ViewModel = ViewModelProvider(this, ChatKitV4ViewModelFactory(
                 application = application,
                 chatId = PublicValue.CHAT_ID
             )
