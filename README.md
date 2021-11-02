@@ -56,4 +56,7 @@ chatKitV4.initializeChatKitV4ListCallback(this)
 chatKitV4.initializeChatKitV4InputCallback(this)
 ```
 
+## UI
+In this version of our ChatKit series, we seprate our UI layer and core layer. we have implement some sort of default UI XML and use it as default chat item UI, but If you want to use your own UI as row items of chat kit you can initialize and overide chat kit xmls. Just use our default ids to make library find and use your custom UI elements. 
+
 
