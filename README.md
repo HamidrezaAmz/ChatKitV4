@@ -41,7 +41,12 @@ var chatKitV4ViewModel = ViewModelProvider(this, ChatKitV4ViewModelFactory(
         
 chatKitV4.initializeChatKitV4ViewModel(chatKitV4ViewModel)
 ```
-#### Note: CHAT_ID is a string hash used as Id, this will help us to seprate chats and use this library on more than one chat view
+
+#### Note 1: 
+CHAT_ID is a string hash used as Id, this will help us to seprate chats and use this library on more than one chat view
+
+#### Note 2: 
+```initializeChatKitV4ViewModel()``` Is a **suspend** function, so you should call It inside a coroutine scope ;)
 
 ## Callbacks
 We have impelement some interfaces to receive use intractions with chat view and chat messages. If you need to use them, you can use it in this way:
