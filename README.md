@@ -60,3 +60,12 @@ chatKitV4.initializeChatKitV4InputCallback(this)
 In this version of our ChatKit series, we seprate our UI layer and core layer. we have implement some sort of default UI XML and use it as default chat item UI, but If you want to use your own UI as row items of chat kit you can initialize and overide chat kit xmls. Just use our default ids to make library find and use your custom UI elements. 
 
 
+| layout id  | usage |
+| ------------- | ------------- |
+| self_text_layout_id  | This layout reference used for **client** side **text** style chat view  |
+| self_voice_layout_id  | This layout reference used for **client** side **voice** style chat view  |
+| other_text_layout_id  | This layout reference used for **other** side **text** style chat view  |
+| other_voice_layout_id  | This layout reference used for **other** side **voice** style chat view  |
+
+
+
