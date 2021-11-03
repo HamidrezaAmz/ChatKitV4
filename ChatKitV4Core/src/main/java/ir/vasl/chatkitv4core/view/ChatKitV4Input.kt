@@ -6,10 +6,12 @@ import android.text.TextWatcher
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.core.content.res.ResourcesCompat
 import com.devlomi.record_view.OnRecordListener
 import com.devlomi.record_view.RecordPermissionHandler
 import ir.vasl.chatkitv4core.R
 import ir.vasl.chatkitv4core.databinding.LayoutChatkitV4InputBinding
+import ir.vasl.chatkitv4core.util.publicExtentions.setTypeface
 import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4InputCallback
 
 class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
@@ -34,6 +36,7 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
 
     private fun initializeRecordView() {
         binding.recordButton.setRecordView(binding.recordView)
+        binding.recordView.setTypeface(ResourcesCompat.getFont(context, R.font.app_font))
         binding.recordView.setOnRecordListener(object : OnRecordListener {
 
             override fun onStart() {
@@ -97,6 +100,10 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
             binding.recordButton.setImageResource(R.drawable.ic_baseline_send_24)
             binding.recordButton.isListenForRecord = false
         }
+    }
+
+    private fun temp() {
+        val recorderView = binding.recordView
     }
 
 }
