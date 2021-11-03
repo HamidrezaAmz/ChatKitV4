@@ -5,22 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?attr/chatkitv4_input_background"
+    android:layoutDirection="ltr"
     android:padding="@dimen/padding_8dp">
-
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_send_message"
-        android:layout_width="@dimen/height_50dp"
-        android:layout_height="@dimen/height_50dp"
-        android:layout_marginEnd="@dimen/margin_8dp"
-        android:background="?attr/chatkitv4_input_send_button_background"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:src="?attr/chatkitv4_input_send_button_icon"
-        android:tint="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:ignore="SpeakableTextPresentCheck" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/et_input_message"
@@ -36,24 +22,37 @@
         android:padding="@dimen/padding_16dp"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/btn_send_message"
+        app:layout_constraintEnd_toStartOf="@+id/record_button"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="TextContrastCheck" />
 
-    <androidx.appcompat.widget.AppCompatImageButton
-        android:id="@+id/btn_choose_attachment"
-        android:layout_width="@dimen/height_50dp"
-        android:layout_height="@dimen/height_50dp"
-        android:layout_marginEnd="@dimen/margin_8dp"
-        android:background="@color/transparent"
-        android:clickable="true"
-        android:focusable="true"
-        android:foreground="?android:attr/selectableItemBackground"
-        android:src="?attr/chatkitv4_input_attachment_icon"
-        android:tint="@color/gray"
-        app:layout_constraintBottom_toBottomOf="@id/et_input_message"
-        app:layout_constraintEnd_toEndOf="@id/et_input_message"
-        app:layout_constraintTop_toTopOf="@id/et_input_message"
-        tools:ignore="SpeakableTextPresentCheck" />
+    <com.devlomi.record_view.RecordView
+        android:id="@+id/record_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_12dp"
+        android:layout_marginEnd="@dimen/margin_12dp"
+        app:counter_time_color="#ff0000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/record_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:slide_to_cancel_arrow="@drawable/recv_ic_arrow"
+        app:slide_to_cancel_arrow_color="#000000"
+        app:slide_to_cancel_bounds="8dp"
+        app:slide_to_cancel_margin_right="10dp"
+        app:slide_to_cancel_text="Slide To Cancel" />
+
+    <com.devlomi.record_view.RecordButton
+        android:id="@+id/record_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/recv_bg_mic"
+        android:scaleType="centerInside"
+        android:tint="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mic_icon="@drawable/recv_ic_mic_white" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
