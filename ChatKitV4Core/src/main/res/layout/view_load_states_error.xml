@@ -9,35 +9,37 @@
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView_empty"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="@dimen/height_60dp"
+        android:layout_height="@dimen/height_60dp"
         android:layout_gravity="center_horizontal"
-        android:tint="@color/teal_200"
+        android:tint="?attr/chatkitv4_list_error_view_icon_color"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_baseline_error_24" />
+        app:srcCompat="?attr/chatkitv4_list_error_view_icon" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_error"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/app_font"
         android:gravity="center_horizontal"
         android:padding="8dp"
-        android:text="We have an error, try again please"
+        android:text="?attr/chatkitv4_list_error_view_hint"
         android:textAlignment="center"
-        android:textColor="#000000"
+        android:textColor="?attr/chatkitv4_list_error_view_hint_color"
         android:textSize="14sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageView_empty"
-        tools:text="We have an error, try again pleas :/" />
+        tools:text="We have an error, try again please :/" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/button_retry"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:fontFamily="@font/app_font"
         android:text="Retry Again"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

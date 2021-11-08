@@ -15,7 +15,6 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
-
     buildTypes {
         release {
             minifyEnabled false
@@ -28,7 +27,6 @@ android {
     buildFeatures {
         viewBinding true
     }
-
     ndkVersion "21.3.6528147"
 }
 
@@ -42,7 +40,12 @@ dependencies {
     implementation 'androidx.activity:activity-ktx:1.3.1'
 
     // chat kit
+    // lib
     implementation project(path: ':ChatKitV4Core')
+
+    // chat kit
+    // dependency
+    // implementation 'com.github.HamidrezaAmz:ChatKitV4:1.0.3'
 
     // version
     testImplementation 'junit:junit:4.13.2'

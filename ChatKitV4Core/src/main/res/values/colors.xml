@@ -48,5 +48,7 @@
     <color name="self_bubble_color">#FFFFFF</color>
     <color name="self_bubble_color_selected">#8BC34A</color>
     <color name="self_bubble_color_selected_transparent">#458BC34A</color>
+    <color name="default_list_empty_view_icon_color">@color/pink</color>
+    <color name="default_list_error_view_icon_color">@color/warm_grey</color>
 
 </resources>

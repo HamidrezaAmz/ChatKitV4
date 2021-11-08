@@ -19,6 +19,9 @@ class ChatStyle(context: Context, attrs: AttributeSet?) : ChatBaseStyle(context,
     // system scope
     var systemTextLayoutId: Int = -1
 
+    // chatkit scope
+
+
     companion object Parser {
 
         fun parse(context: Context, attrs: AttributeSet?): ChatStyle {
@@ -50,6 +53,9 @@ class ChatStyle(context: Context, attrs: AttributeSet?) : ChatBaseStyle(context,
                 R.styleable.ChatKitV4_system_text_layout_id,
                 R.layout.defaul_system_text_layout
             )
+
+            // chatkit scope
+
 
             typedArray.recycle()
             return chatStyle

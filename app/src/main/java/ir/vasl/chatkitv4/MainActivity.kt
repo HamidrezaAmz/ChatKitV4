@@ -1,5 +1,6 @@
 package ir.vasl.chatkitv4
 
+import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
@@ -9,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
 import ir.vasl.chatkitv4.databinding.ActivityMainBinding
-import ir.vasl.chatkitv4.helpers.LocaleHelper
+import ir.vasl.chatkitv4.helpers.ContextWrapper
 import ir.vasl.chatkitv4.utils.PublicValue
 import ir.vasl.chatkitv4core.model.MessageModel
 import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageContentType
@@ -21,6 +22,7 @@ import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4ListCallback
 import ir.vasl.chatkitv4core.viewmodel.ChatKitV4ViewModel
 import ir.vasl.chatkitv4core.viewmodel.factory.ChatKitV4ViewModelFactory
 import kotlinx.coroutines.launch
+import java.util.*
 
 class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputCallback {
 
@@ -34,9 +36,13 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        LocaleHelper.setApplicationLanguage(this)
-
         initializeChatKitV4()
+    }
+
+    override fun attachBaseContext(base: Context?) {
+        val newLocale = Locale("fa")
+        val context: Context = ContextWrapper.wrap(base, newLocale)
+        super.attachBaseContext(context)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

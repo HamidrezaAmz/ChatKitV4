@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">ChatKitV4</string>
+    <string name="app_name">چت کیت ورژن ۴</string>
     <string name="chatkitv4_input_hint">ارسال پیام</string>
+    <string name="chatkitv4_list_empty_view_hint">لیست شما خالی است</string>
 </resources>

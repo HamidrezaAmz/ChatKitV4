@@ -102,8 +102,4 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
         }
     }
 
-    private fun temp() {
-        val recorderView = binding.recordView
-    }
-
 }

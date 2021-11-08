@@ -20,6 +20,7 @@
         android:maxLines="4"
         android:minHeight="48dp"
         android:padding="@dimen/padding_16dp"
+        android:text="?attr/chatkitv4_input_edittext_hint"
         android:textSize="12sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/record_button"
