@@ -68,4 +68,29 @@ In this version of our ChatKit series, we seprate our UI layer and core layer. w
 | other_voice_layout_id  | This layout reference used for **other** side **voice** style chat view  |
 
 
+## UI - THEME
+Do not forget to implement ChatKitV4.theme, you can customize each section of **ChatKit** 
+```xml
+    <style name="ChatKitV4.Theme.Custom" parent="ChatKitV4.Theme">
+        <item name="self_text_layout_id">@layout/self_text_layout</item>
+        <item name="self_voice_layout_id">@layout/self_voice_layout</item>
+        <item name="other_text_layout_id">@layout/other_text_layout</item>
+        <item name="other_voice_layout_id">@layout/other_voice_layout</item>
+        <item name="chatkitv4_input_background">@color/lightWhite</item>
+        <item name="chatkitv4_input_send_button_icon">@drawable/ic_baseline_send_24</item>
+        <item name="chatkitv4_input_send_button_background">@drawable/shape_circle</item>
+        <item name="chatkitv4_input_edittext_background">@drawable/shape_rectangle_round_corner</item>
+        <item name="chatkitv4_input_edittext_hint">@string/chatkitv4_input_hint</item>
+        <item name="chatkitv4_list_empty_view_icon">@drawable/ic_baseline_shopping_basket_24</item>
+        <item name="chatkitv4_list_empty_view_icon_color">@color/red</item>
+        <item name="chatkitv4_list_empty_view_hint">@string/chatkitv4_list_empty_view_hint</item>
+        <item name="chatkitv4_list_empty_view_hint_color">@color/black</item>
+        <item name="chatkitv4_list_error_view_icon">@drawable/ic_baseline_sentiment_very_dissatisfied_24</item>
+        <item name="chatkitv4_list_error_view_icon_color">@color/default_list_error_view_icon_color</item>
+        <item name="chatkitv4_list_error_view_hint">@string/title_chatkitv4_list_error_view_hint</item>
+        <item name="chatkitv4_list_error_view_hint_color">@color/teal</item>
+    </style>
+```
+
+
 
