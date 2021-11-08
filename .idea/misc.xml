@@ -26,7 +26,7 @@
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_system_layout.xml" value="0.29791666666666666" />
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_system_text_layout.xml" value="0.29791666666666666" />
         <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4.xml" value="0.2074074074074074" />
-        <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4_input.xml" value="0.125" />
+        <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4_input.xml" value="0.375" />
         <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4_item_bot_message.xml" value="0.17314814814814813" />
         <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4_item_client_message.xml" value="0.21481481481481482" />
         <entry key="ChatKitV4Core/src/main/res/layout/layout_chatkit_v4_item_message.xml" value="0.2833333333333333" />
