@@ -1,4 +1,4 @@
-# ChatKitV4 (This read me is under develop)
+# ChatKitV4 
 This is our new version of chatkit. 
 
 [![API](https://img.shields.io/badge/API-23%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=23)
