@@ -1,5 +1,9 @@
 # ChatKitV4 (This read me is under develop)
-This is our new version of chatkit. [![](https://www.jitpack.io/v/HamidrezaAmz/ChatKitV4.svg)](https://www.jitpack.io/#HamidrezaAmz/ChatKitV4)
+This is our new version of chatkit. 
+
+[![API](https://img.shields.io/badge/API-23%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=23)
+[![](https://jitpack.io/v/HamidrezaAmz/ChatKitV4.svg)](https://jitpack.io/#HamidrezaAmz/ChatKitV4)
+[![](https://jitpack.io/v/HamidrezaAmz/ChatKitV4/month.svg)](https://jitpack.io/#HamidrezaAmz/ChatKitV4)
 
 Here we seprate **Core Logic** and **UI** sections. You can use it as seprate module into your applications. **ChatKitV4** can support all issues and needs related 
 to chat scenarios and all sections that is based on chat like support sections, ticketing section and etc.
