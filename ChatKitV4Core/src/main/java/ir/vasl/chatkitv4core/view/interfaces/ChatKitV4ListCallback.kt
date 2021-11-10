@@ -2,7 +2,7 @@ package ir.vasl.chatkitv4core.view.interfaces
 
 import ir.vasl.chatkitv4core.model.MessageModel
 
-interface ChatKitV4ListCallback {
+public interface ChatKitV4ListCallback {
     fun onMessageClicked(messageModel: MessageModel?) {}
     fun onMessagePressed(messageModel: MessageModel?) {}
     fun onCopyMessageClicked() {}

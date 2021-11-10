@@ -11,8 +11,8 @@ android {
     defaultConfig {
         minSdk 23
         targetSdk 30
-        versionCode 6
-        versionName "1.0.6"
+        versionCode 7
+        versionName "1.0.7"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -24,9 +24,16 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+
     buildFeatures {
         dataBinding true
     }
+
     buildFeatures {
         viewBinding true
     }
@@ -34,7 +41,7 @@ android {
 
 dependencies {
 
-    // global
+    // Global
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.3.1'
     implementation 'com.google.android.material:material:1.4.0'
@@ -59,10 +66,10 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.3.1"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.3.1"
 
-    // coil
+    // Coil
     implementation "io.coil-kt:coil:1.3.2"
 
-    // room
+    // Room
     implementation "androidx.room:room-runtime:2.3.0"
     implementation "androidx.room:room-ktx:2.3.0"
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
@@ -72,21 +79,21 @@ dependencies {
     implementation "androidx.navigation:navigation-fragment-ktx:2.3.5"
     implementation "androidx.navigation:navigation-ui-ktx:2.3.5"
 
-    // hilt
+    // Hilt
     implementation "com.google.dagger:hilt-android:2.39.1"
     kapt "com.google.dagger:hilt-compiler:2.39.1"
 
     // Storage
     implementation "com.anggrayudi:storage:0.13.0"
 
-    // pump
+    // Pump
     implementation 'com.huxq17.pump:download:1.3.10'
     implementation 'com.squareup.okhttp3:okhttp:lastversion'
 
     // RecordView
     implementation 'com.github.3llomi:RecordView:3.0.2'
 
-    // core
+    // Core
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
@@ -100,7 +107,7 @@ afterEvaluate {
 
                 groupId = 'com.github.hamidrezaamz'
                 artifactId = 'ChatKitV4'
-                version = '1.0.6'
+                version = '1.0.7'
             }
         }
     }
