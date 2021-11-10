@@ -1,4 +1,5 @@
 package ir.vasl.chatkitv4core.hilt
+/*
 
 import android.content.Context
 import androidx.room.Room
@@ -10,7 +11,6 @@ import dagger.hilt.android.qualifiers.ApplicationContext
 import ir.vasl.chatkitv4core.repository.local.ChatKitV4Database
 import ir.vasl.chatkitv4core.util.PublicValue
 import javax.inject.Singleton
-/*
 
 @Module
 @InstallIn(ActivityComponent::class)

@@ -1,5 +1,7 @@
 package ir.vasl.chatkitv4core.hilt
 
+/*
+
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -9,7 +11,6 @@ import ir.vasl.chatkitv4core.repository.ChatKitV4Repository
 import ir.vasl.chatkitv4core.repository.local.ChatKitV4Database
 import ir.vasl.chatkitv4core.viewmodel.ChatKitV4ViewModel
 import javax.inject.Singleton
-/*
 
 @Module
 @InstallIn(ActivityComponent::class)
