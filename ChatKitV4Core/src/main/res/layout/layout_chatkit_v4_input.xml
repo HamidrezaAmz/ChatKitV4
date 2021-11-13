@@ -6,54 +6,101 @@
     android:layout_height="wrap_content"
     android:background="?attr/chatkitv4_input_background"
     android:layoutDirection="ltr"
-    android:padding="@dimen/padding_8dp">
+    android:minHeight="@dimen/height_70dp">
 
-    <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/et_input_message"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_8dp"
-        android:layout_marginEnd="@dimen/margin_8dp"
-        android:background="?attr/chatkitv4_input_edittext_background"
-        android:fontFamily="@font/app_font"
-        android:gravity="center_vertical"
-        android:hint="?attr/chatkitv4_input_edittext_hint"
-        android:maxLines="4"
-        android:minHeight="48dp"
-        android:padding="@dimen/padding_16dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/record_button"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="TextContrastCheck" />
-
-    <com.devlomi.record_view.RecordView
-        android:id="@+id/record_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_12dp"
-        android:layout_marginEnd="@dimen/margin_12dp"
-        app:counter_time_color="#ff0000"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@id/record_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:slide_to_cancel_arrow="@drawable/recv_ic_arrow"
-        app:slide_to_cancel_arrow_color="#000000"
-        app:slide_to_cancel_bounds="8dp"
-        app:slide_to_cancel_margin_right="10dp"
-        app:slide_to_cancel_text="بکش اگه میتونی" />
-
-    <com.devlomi.record_view.RecordButton
-        android:id="@+id/record_button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/recv_bg_mic"
-        android:scaleType="centerInside"
-        android:tint="@color/white"
+        android:layout_height="0dp"
+        android:padding="@dimen/padding_8dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:mic_icon="@drawable/recv_ic_mic_white" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/et_input_message"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_8dp"
+            android:layout_marginEnd="@dimen/margin_8dp"
+            android:background="?attr/chatkitv4_input_edittext_background"
+            android:fontFamily="@font/app_font"
+            android:gravity="center_vertical"
+            android:hint="?attr/chatkitv4_input_edittext_hint"
+            android:maxLines="4"
+            android:minHeight="48dp"
+            android:padding="@dimen/padding_16dp"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/record_button"
+            app:layout_constraintStart_toStartOf="parent"
+            tools:ignore="TextContrastCheck" />
+
+        <com.devlomi.record_view.RecordView
+            android:id="@+id/record_view"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_12dp"
+            android:layout_marginEnd="@dimen/margin_12dp"
+            app:counter_time_color="#ff0000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/record_button"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:slide_to_cancel_arrow="@drawable/recv_ic_arrow"
+            app:slide_to_cancel_arrow_color="#000000"
+            app:slide_to_cancel_bounds="8dp"
+            app:slide_to_cancel_margin_right="10dp"
+            app:slide_to_cancel_text="بکش اگه میتونی" />
+
+        <com.devlomi.record_view.RecordButton
+            android:id="@+id/record_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/recv_bg_mic"
+            android:scaleType="centerInside"
+            android:tint="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:mic_icon="@drawable/recv_ic_mic_white" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout_user_blocker"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/shape_border_with_shadow"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textView_user_blocker_title"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:fontFamily="@font/app_font"
+            android:gravity="center"
+            android:paddingTop="@dimen/padding_8dp"
+            android:text="YOUR INPUT IS NOW BLOCKED"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

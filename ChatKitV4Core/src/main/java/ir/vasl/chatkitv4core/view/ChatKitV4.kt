@@ -79,11 +79,11 @@ class ChatKitV4 @kotlin.jvm.JvmOverloads constructor(
     }
 
     fun blockChatKitV4Input() {
-
+        binding.chatKitV4Input.blockChatKitV4Input()
     }
 
     fun unBlockChatKitV4Input() {
-
+        binding.chatKitV4Input.unBlockChatKitV4Input()
     }
 
 }

@@ -102,4 +102,12 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
         }
     }
 
+    fun blockChatKitV4Input() {
+        binding.constraintLayoutUserBlocker.visibility = VISIBLE
+    }
+
+    fun unBlockChatKitV4Input() {
+        binding.constraintLayoutUserBlocker.visibility = GONE
+    }
+    
 }
