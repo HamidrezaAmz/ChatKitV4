@@ -6,5 +6,5 @@
     <string name="title_chatkitv4_input_edittext_hint">ارسال پیام</string>
     <string name="title_chatkitv4_list_empty_view_hint">لیست پیام های شما خالی است</string>
     <string name="title_chatkitv4_list_error_view_hint">خطایی رخ داده است، مجدد تلاش کنید</string>
-
+    <string name="title_chatkitv4_input_user_blocker_hint">امکان وارد کردن محتوی وجود ندارد</string>
 </resources>

@@ -93,7 +93,7 @@
             android:fontFamily="@font/app_font"
             android:gravity="center"
             android:paddingTop="@dimen/padding_8dp"
-            android:text="YOUR INPUT IS NOW BLOCKED"
+            android:text="?attr/chatkitv4_input_user_blocker_hint"
             android:textColor="@color/black"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"

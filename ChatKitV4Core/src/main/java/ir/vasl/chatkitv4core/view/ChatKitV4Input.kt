@@ -40,21 +40,25 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
         binding.recordView.setOnRecordListener(object : OnRecordListener {
 
             override fun onStart() {
+                showUserInputHint(false)
                 if (::chatKitV4InputCallback.isInitialized)
                     chatKitV4InputCallback.onRecorderStart()
             }
 
             override fun onCancel() {
+                showUserInputHint()
                 if (::chatKitV4InputCallback.isInitialized)
                     chatKitV4InputCallback.onRecorderCancel()
             }
 
             override fun onFinish(recordTime: Long, limitReached: Boolean) {
+                showUserInputHint()
                 if (::chatKitV4InputCallback.isInitialized)
                     chatKitV4InputCallback.onRecorderFinish(recordTime, limitReached)
             }
 
             override fun onLessThanSecond() {
+                showUserInputHint()
                 if (::chatKitV4InputCallback.isInitialized)
                     chatKitV4InputCallback.onRecorderLessThanSecond()
             }
@@ -102,6 +106,15 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
         }
     }
 
+    private fun showUserInputHint(showUserInputHint: Boolean = true) {
+        if (showUserInputHint) {
+            binding.etInputMessage.hint =
+                context.getString(R.string.title_chatkitv4_input_edittext_hint)
+        } else {
+            binding.etInputMessage.hint = null
+        }
+    }
+
     fun blockChatKitV4Input() {
         binding.constraintLayoutUserBlocker.visibility = VISIBLE
     }
@@ -109,5 +122,5 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
     fun unBlockChatKitV4Input() {
         binding.constraintLayoutUserBlocker.visibility = GONE
     }
-    
+
 }

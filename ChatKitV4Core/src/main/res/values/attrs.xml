@@ -14,6 +14,7 @@
         <attr name="chatkitv4_input_attachment_icon" format="reference" />
         <attr name="chatkitv4_input_edittext_background" format="reference" />
         <attr name="chatkitv4_input_edittext_hint" format="reference" />
+        <attr name="chatkitv4_input_user_blocker_hint" format="reference" />
 
         <attr name="chatkitv4_list_empty_view_icon" format="reference" />
         <attr name="chatkitv4_list_empty_view_icon_color" format="reference" />
