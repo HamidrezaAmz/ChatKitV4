@@ -1,9 +1,9 @@
 <resources>
     <string name="sample_title">Lorem ipsum is placeholder</string>
     <string name="sample_sub_title">Lorem ipsum is placeholder text commonly used in the graphic, print, and publishing industries for previewing layouts and visual mockups</string>
-
     <string name="title_chatkitv4_input_edittext_hint">Send message</string>
     <string name="title_chatkitv4_list_empty_view_hint">Your list is empty</string>
     <string name="title_chatkitv4_list_error_view_hint">There is a error, try again</string>
     <string name="title_chatkitv4_input_user_blocker_hint">Your input is blocked</string>
+    <string name="title_chatkitv4_input_pull_to_cancel">Pull to cancel</string>
 </resources>
