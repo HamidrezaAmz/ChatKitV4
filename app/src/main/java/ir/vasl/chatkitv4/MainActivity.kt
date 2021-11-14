@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
                 binding.chatKitV4.addNewMessageIntoChatKitV4(
                     SampleChatDataGenerator.getMessage(
                         chatId = PublicValue.CHAT_ID,
-                        messageOwnerType = MessageOwnerType.OTHER,
+                        messageOwnerType = MessageOwnerType.BETA,
                         messageContentType = MessageContentType.TEXT
                     )
                 )
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
                 binding.chatKitV4.addNewMessageIntoChatKitV4(
                     SampleChatDataGenerator.getMessage(
                         chatId = PublicValue.CHAT_ID,
-                        messageOwnerType = MessageOwnerType.OTHER,
+                        messageOwnerType = MessageOwnerType.BETA,
                         messageContentType = MessageContentType.VOICE
                     )
                 )
@@ -90,7 +90,7 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
                 binding.chatKitV4.addNewMessageIntoChatKitV4(
                     SampleChatDataGenerator.getMessage(
                         chatId = PublicValue.CHAT_ID,
-                        messageOwnerType = MessageOwnerType.SELF,
+                        messageOwnerType = MessageOwnerType.ALPHA,
                         messageContentType = MessageContentType.TEXT
                     )
                 )
@@ -101,7 +101,7 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
                 binding.chatKitV4.addNewMessageIntoChatKitV4(
                     SampleChatDataGenerator.getMessage(
                         chatId = PublicValue.CHAT_ID,
-                        messageOwnerType = MessageOwnerType.SELF,
+                        messageOwnerType = MessageOwnerType.ALPHA,
                         messageContentType = MessageContentType.VOICE
                     )
                 )
@@ -146,7 +146,7 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
             createAt = System.currentTimeMillis(),
             subTitle = message,
             date = "12:00",
-            messageOwnerType = MessageOwnerType.SELF.name,
+            messageOwnerType = MessageOwnerType.ALPHA.name,
             messageContentType = MessageContentType.TEXT.name,
             chatId = PublicValue.CHAT_ID
         )

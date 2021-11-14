@@ -34,62 +34,62 @@ class ChatKitV4MessageAdapter(
 
         return when (viewType) {
 
-            // self messages scope
-            MessageOwnerType.SELF_TEXT.ordinal -> {
+            // alpha messages scope
+            MessageOwnerType.ALPHA_TEXT.ordinal -> {
                 ViewHolderSelfTextMessage(
                     view = LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.selfTextLayoutId, parent, false),
+                        .inflate(chatStyle.alphaTextLayoutId, parent, false),
                     chatKitV4ListCallback = chatKitV4ListCallback
                 )
             }
-            MessageOwnerType.SELF_VOICE.ordinal -> {
+            MessageOwnerType.ALPHA_VOICE.ordinal -> {
                 ViewHolderSelfVoiceMessage(
                     view = LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.selfVoiceLayoutId, parent, false),
+                        .inflate(chatStyle.alphaVoiceLayoutId, parent, false),
                     chatKitV4ListCallback = chatKitV4ListCallback
                 )
             }
-            MessageOwnerType.SELF_VIDEO.ordinal -> {
+            MessageOwnerType.ALPHA_VIDEO.ordinal -> {
                 ViewHolderSelfTextMessage(
                     view = LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.selfTextLayoutId, parent, false),
+                        .inflate(chatStyle.alphaTextLayoutId, parent, false),
                     chatKitV4ListCallback = chatKitV4ListCallback
                 )
             }
-            MessageOwnerType.SELF_IMAGE.ordinal -> {
+            MessageOwnerType.ALPHA_IMAGE.ordinal -> {
                 ViewHolderSelfTextMessage(
                     view = LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.selfTextLayoutId, parent, false),
+                        .inflate(chatStyle.alphaTextLayoutId, parent, false),
                     chatKitV4ListCallback = chatKitV4ListCallback
                 )
             }
 
-            // other messages scope
-            MessageOwnerType.OTHER_TEXT.ordinal -> {
+            // beta messages scope
+            MessageOwnerType.BETA_TEXT.ordinal -> {
                 ViewHolderOtherTextMessage(
                     LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.otherTextLayoutId, parent, false),
+                        .inflate(chatStyle.betaTextLayoutId, parent, false),
                     chatKitV4ListCallback = chatKitV4ListCallback
                 )
             }
-            MessageOwnerType.OTHER_VOICE.ordinal -> {
+            MessageOwnerType.BETA_VOICE.ordinal -> {
                 ViewHolderOtherVoiceMessage(
                     LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.otherVoiceLayoutId, parent, false),
+                        .inflate(chatStyle.betaVoiceLayoutId, parent, false),
                     chatKitV4ListCallback = chatKitV4ListCallback
                 )
             }
-            MessageOwnerType.OTHER_VIDEO.ordinal -> {
+            MessageOwnerType.BETA_VIDEO.ordinal -> {
                 ViewHolderOtherTextMessage(
                     LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.otherTextLayoutId, parent, false),
+                        .inflate(chatStyle.betaTextLayoutId, parent, false),
                     chatKitV4ListCallback = chatKitV4ListCallback
                 )
             }
-            MessageOwnerType.OTHER_IMAGE.ordinal -> {
+            MessageOwnerType.BETA_IMAGE.ordinal -> {
                 ViewHolderOtherTextMessage(
                     LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.otherTextLayoutId, parent, false),
+                        .inflate(chatStyle.betaTextLayoutId, parent, false),
                     chatKitV4ListCallback = chatKitV4ListCallback
                 )
             }
@@ -138,38 +138,38 @@ class ChatKitV4MessageAdapter(
 
     override fun getItemViewType(position: Int): Int {
         return when (getItem(position)?.messageOwnerType) {
-            MessageOwnerType.SELF.name -> {
+            MessageOwnerType.ALPHA.name -> {
                 when (getItem(position)?.messageContentType) {
                     MessageContentType.TEXT.name -> {
-                        MessageOwnerType.SELF_TEXT.ordinal
+                        MessageOwnerType.ALPHA_TEXT.ordinal
                     }
                     MessageContentType.VOICE.name -> {
-                        MessageOwnerType.SELF_VOICE.ordinal
+                        MessageOwnerType.ALPHA_VOICE.ordinal
                     }
                     MessageContentType.VIDEO.name -> {
-                        MessageOwnerType.SELF_VIDEO.ordinal
+                        MessageOwnerType.ALPHA_VIDEO.ordinal
                     }
                     MessageContentType.IMAGE.name -> {
-                        MessageOwnerType.SELF_IMAGE.ordinal
+                        MessageOwnerType.ALPHA_IMAGE.ordinal
                     }
                     else -> {
                         MessageOwnerType.UNDEFINED.ordinal
                     }
                 }
             }
-            MessageOwnerType.OTHER.name -> {
+            MessageOwnerType.BETA.name -> {
                 when (getItem(position)?.messageContentType) {
                     MessageContentType.TEXT.name -> {
-                        MessageOwnerType.OTHER_TEXT.ordinal
+                        MessageOwnerType.BETA_TEXT.ordinal
                     }
                     MessageContentType.VOICE.name -> {
-                        MessageOwnerType.OTHER_VOICE.ordinal
+                        MessageOwnerType.BETA_VOICE.ordinal
                     }
                     MessageContentType.VIDEO.name -> {
-                        MessageOwnerType.OTHER_VIDEO.ordinal
+                        MessageOwnerType.BETA_VIDEO.ordinal
                     }
                     MessageContentType.IMAGE.name -> {
-                        MessageOwnerType.OTHER_IMAGE.ordinal
+                        MessageOwnerType.BETA_IMAGE.ordinal
                     }
                     else -> {
                         MessageOwnerType.UNDEFINED.ordinal

@@ -40,14 +40,13 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="pink">#E35B89</color>
     <color name="yellow">#FFEB3B</color>
-
     <color name="default_input_background">@color/teal</color>
     <color name="default_input_send_background">@color/yellow</color>
     <color name="default_input_edittext_background">@color/cornflower_blue_light_40</color>
-    <color name="other_bubble_color">#009989</color>
-    <color name="self_bubble_color">#FFFFFF</color>
-    <color name="self_bubble_color_selected">#8BC34A</color>
-    <color name="self_bubble_color_selected_transparent">#458BC34A</color>
+    <color name="beta_bubble_color">#009989</color>
+    <color name="alpha_bubble_color">#FFFFFF</color>
+    <color name="alpha_bubble_color_selected">#8BC34A</color>
+    <color name="alpha_bubble_color_selected_transparent">#458BC34A</color>
     <color name="default_list_empty_view_icon_color">@color/pink</color>
     <color name="default_list_error_view_icon_color">@color/warm_grey</color>
 

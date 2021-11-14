@@ -2,9 +2,10 @@
 <resources>
 
     <style name="ChatKitV4.Theme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="self_text_layout_id">@layout/defaul_self_text_layout</item>
-        <item name="self_voice_layout_id">@layout/defaul_self_voice_layout</item>
-        <item name="other_text_layout_id">@layout/defaul_other_text_layout</item>
+        <item name="alpha_text_layout_id">@layout/defaul_alpha_text_layout</item>
+        <item name="alpha_voice_layout_id">@layout/defaul_alpha_voice_layout</item>
+        <item name="beta_text_layout_id">@layout/defaul_beta_text_layout</item>
+        <item name="beta_voice_layout_id">@layout/defaul_beta_voice_layout</item>
         <item name="system_text_layout_id">@layout/defaul_system_text_layout</item>
         <item name="chatkitv4_input_background">@color/default_input_background</item>
         <item name="chatkitv4_input_send_button_icon">@drawable/ic_default_baseline_send_24</item>

@@ -66,20 +66,20 @@ In this version of our ChatKit series, we seprate our UI layer and core layer. w
 
 | layout id  | usage |
 | ------------- | ------------- |
-| self_text_layout_id  | This layout reference used for **client** side **text** style chat view  |
-| self_voice_layout_id  | This layout reference used for **client** side **voice** style chat view  |
-| other_text_layout_id  | This layout reference used for **other** side **text** style chat view  |
-| other_voice_layout_id  | This layout reference used for **other** side **voice** style chat view  |
+| alpha_text_layout_id  | This layout reference used for **client** side **text** style chat view  |
+| alpha_voice_layout_id  | This layout reference used for **client** side **voice** style chat view  |
+| beta_text_layout_id  | This layout reference used for **beta** side **text** style chat view  |
+| beta_voice_layout_id  | This layout reference used for **beta** side **voice** style chat view  |
 
 
 ## UI - THEME
 Do not forget to implement ChatKitV4.theme, you can customize each section of **ChatKit** 
 ```xml
     <style name="ChatKitV4.Theme.Custom" parent="ChatKitV4.Theme">
-        <item name="self_text_layout_id">@layout/self_text_layout</item>
-        <item name="self_voice_layout_id">@layout/self_voice_layout</item>
-        <item name="other_text_layout_id">@layout/other_text_layout</item>
-        <item name="other_voice_layout_id">@layout/other_voice_layout</item>
+        <item name="alpha_text_layout_id">@layout/alpha_text_layout</item>
+        <item name="alpha_voice_layout_id">@layout/alpha_voice_layout</item>
+        <item name="beta_text_layout_id">@layout/beta_text_layout</item>
+        <item name="beta_voice_layout_id">@layout/beta_voice_layout</item>
         <item name="chatkitv4_input_background">@color/lightWhite</item>
         <item name="chatkitv4_input_send_button_icon">@drawable/ic_baseline_send_24</item>
         <item name="chatkitv4_input_send_button_background">@drawable/shape_circle</item>

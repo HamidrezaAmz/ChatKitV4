@@ -2,7 +2,7 @@
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
     android:shape="rectangle">
 
-    <solid android:color="@color/other_bubble_color" />
+    <solid android:color="@color/beta_bubble_color" />
 
     <corners
         android:bottomLeftRadius="10dip"

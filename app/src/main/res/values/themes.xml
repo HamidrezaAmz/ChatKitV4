@@ -16,10 +16,10 @@
 
     <!-- Override ChatKitV4 theme. -->
     <style name="ChatKitV4.Theme.Custom" parent="ChatKitV4.Theme">
-        <item name="self_text_layout_id">@layout/self_text_layout</item>
-        <item name="self_voice_layout_id">@layout/self_voice_layout</item>
-        <item name="other_text_layout_id">@layout/other_text_layout</item>
-        <item name="other_voice_layout_id">@layout/other_voice_layout</item>
+        <item name="alpha_text_layout_id">@layout/alpha_text_layout</item>
+        <item name="alpha_voice_layout_id">@layout/alpha_voice_layout</item>
+        <item name="beta_text_layout_id">@layout/beta_text_layout</item>
+        <item name="beta_voice_layout_id">@layout/beta_voice_layout</item>
         <item name="chatkitv4_input_background">@color/lightWhite</item>
         <item name="chatkitv4_input_send_button_icon">@drawable/ic_baseline_send_24</item>
         <item name="chatkitv4_input_send_button_background">@drawable/shape_circle</item>

@@ -3,11 +3,12 @@
 
     <!--  custom attrs for ChatKitV4  -->
     <declare-styleable name="ChatKitV4">
-        <attr name="self_text_layout_id" format="reference" />
-        <attr name="self_voice_layout_id" format="reference" />
-        <attr name="other_text_layout_id" format="reference" />
-        <attr name="other_voice_layout_id" format="reference" />
+        <attr name="alpha_text_layout_id" format="reference" />
+        <attr name="alpha_voice_layout_id" format="reference" />
+        <attr name="beta_text_layout_id" format="reference" />
+        <attr name="beta_voice_layout_id" format="reference" />
         <attr name="system_text_layout_id" format="reference" />
+
         <attr name="chatkitv4_input_background" format="reference" />
         <attr name="chatkitv4_input_send_button_icon" format="reference" />
         <attr name="chatkitv4_input_send_button_background" format="reference" />

@@ -31,7 +31,7 @@ class SampleChatDataGenerator {
                 title = getTitle(),
                 subTitle = getSubTitle(),
                 date = getDate(),
-                messageOwnerType = if (order % 2 == 0) MessageOwnerType.SELF.name else MessageOwnerType.OTHER.name,
+                messageOwnerType = if (order % 2 == 0) MessageOwnerType.ALPHA.name else MessageOwnerType.BETA.name,
                 messageContentType = MessageContentType.TEXT.name,
                 chatId = chatId
             )
@@ -39,7 +39,7 @@ class SampleChatDataGenerator {
 
         fun getMessage(
             chatId: String,
-            messageOwnerType: MessageOwnerType = MessageOwnerType.SELF,
+            messageOwnerType: MessageOwnerType = MessageOwnerType.ALPHA,
             messageContentType: MessageContentType = MessageContentType.TEXT
         ): MessageModel {
             return MessageModel(
