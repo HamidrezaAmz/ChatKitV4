@@ -15,7 +15,7 @@
 
     <ir.vasl.chatkitv4core.view.ChatKitV4Input
         android:id="@+id/chatKitV4Input"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
