@@ -57,8 +57,8 @@
 
         <com.devlomi.record_view.RecordButton
             android:id="@+id/record_button"
-            android:layout_width="@dimen/height_60dp"
-            android:layout_height="@dimen/height_60dp"
+            android:layout_width="@dimen/height_50dp"
+            android:layout_height="@dimen/height_50dp"
             android:background="?attr/chatkitv4_input_send_button_background"
             android:minWidth="48dp"
             android:minHeight="48dp"
