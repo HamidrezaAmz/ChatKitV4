@@ -23,23 +23,16 @@
         <item name="chatkitv4_input_background">@color/lightWhite</item>
         <item name="chatkitv4_input_send_button_icon">@drawable/ic_baseline_send_24</item>
         <item name="chatkitv4_input_send_button_background">@drawable/shape_circle</item>
-        <item name="chatkitv4_input_edittext_background">@drawable/shape_rectangle_round_corner
-        </item>
+        <item name="chatkitv4_input_edittext_background">@drawable/shape_rectangle_round_corner</item>
         <item name="chatkitv4_input_edittext_hint">@string/chatkitv4_input_hint</item>
-        <item name="chatkitv4_input_user_blocker_hint">@string/chatkitv4_input_user_blocker_title
-        </item>
+        <item name="chatkitv4_input_user_blocker_hint">@string/chatkitv4_input_user_blocker_title</item>
         <item name="chatkitv4_list_empty_view_icon">@drawable/ic_baseline_shopping_basket_24</item>
         <item name="chatkitv4_list_empty_view_icon_color">@color/red</item>
         <item name="chatkitv4_list_empty_view_hint">@string/chatkitv4_list_empty_view_hint</item>
         <item name="chatkitv4_list_empty_view_hint_color">@color/black</item>
-        <item name="chatkitv4_list_error_view_icon">
-            @drawable/ic_baseline_sentiment_very_dissatisfied_24
-        </item>
-        <item name="chatkitv4_list_error_view_icon_color">
-            @color/default_list_error_view_icon_color
-        </item>
-        <item name="chatkitv4_list_error_view_hint">@string/title_chatkitv4_list_error_view_hint
-        </item>
+        <item name="chatkitv4_list_error_view_icon">@drawable/ic_baseline_sentiment_very_dissatisfied_24</item>
+        <item name="chatkitv4_list_error_view_icon_color">@color/default_list_error_view_icon_color</item>
+        <item name="chatkitv4_list_error_view_hint">@string/title_chatkitv4_list_error_view_hint</item>
         <item name="chatkitv4_list_error_view_hint_color">@color/teal</item>
     </style>
 

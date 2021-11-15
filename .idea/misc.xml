@@ -5,6 +5,7 @@
       <map>
         <entry key="../../.gradle/caches/transforms-3/7b7ce496f397a4be138a499b1dfa0e39/transformed/jetified-RecordView-3.0.2/res/drawable/recv_bg_mic.xml" value="0.23148148148148148" />
         <entry key="../../.gradle/caches/transforms-3/7b7ce496f397a4be138a499b1dfa0e39/transformed/jetified-RecordView-3.0.2/res/drawable/recv_ic_mic_white.xml" value="0.23148148148148148" />
+        <entry key="../../.gradle/caches/transforms-3/a9662310c4df26389c75484cc00730fb/transformed/jetified-RecordView-3.0.2/res/drawable/recv_bg_mic.xml" value="0.2948717948717949" />
         <entry key="ChatKitV4Core/src/main/res/drawable/ic_baseline_attachment_24.xml" value="0.28888888888888886" />
         <entry key="ChatKitV4Core/src/main/res/drawable/ic_baseline_drafts_24.xml" value="0.2462962962962963" />
         <entry key="ChatKitV4Core/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.27685185185185185" />
@@ -12,6 +13,7 @@
         <entry key="ChatKitV4Core/src/main/res/drawable/shape_border_with_shadow.xml" value="0.28703703703703703" />
         <entry key="ChatKitV4Core/src/main/res/drawable/shape_other_bubble.xml" value="0.287962962962963" />
         <entry key="ChatKitV4Core/src/main/res/drawable/shape_other_bubble_temp.xml" value="0.2948717948717949" />
+        <entry key="ChatKitV4Core/src/main/res/drawable/shape_round_recorder.xml" value="0.2675925925925926" />
         <entry key="ChatKitV4Core/src/main/res/font/app_font.xml" value="0.25277777777777777" />
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_not_supported_bubble.xml" value="0.2833333333333333" />
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_not_supported_layout.xml" value="0.29791666666666666" />

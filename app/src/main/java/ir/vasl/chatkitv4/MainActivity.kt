@@ -126,8 +126,6 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
             binding.chatKitV4.initializeChatKitV4ViewModel(chatKitV4ViewModel)
         }
 
-        binding.chatKitV4.blockChatKitV4Input()
-
     }
 
     override fun onReachedToEnd() {

@@ -57,15 +57,18 @@
 
         <com.devlomi.record_view.RecordButton
             android:id="@+id/record_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/recv_bg_mic"
+            android:layout_width="@dimen/height_60dp"
+            android:layout_height="@dimen/height_60dp"
+            android:background="?attr/chatkitv4_input_send_button_background"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
             android:scaleType="centerInside"
             android:tint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:mic_icon="@drawable/recv_ic_mic_white" />
+            app:mic_icon="@drawable/recv_ic_mic_white"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
