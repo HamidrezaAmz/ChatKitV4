@@ -155,4 +155,24 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
         binding.chatKitV4.addNewMessageIntoChatKitV4(messageModel)
     }
 
+    override fun onRecorderStart() {
+        Log.i(TAG, "onRecorderStart: ")
+    }
+
+    override fun onRecorderFinish(recordTime: Long, limitReached: Boolean) {
+        Log.i(TAG, "onRecorderFinish: ")
+    }
+
+    override fun onRecorderCancel() {
+        Log.i(TAG, "onRecorderCancel: ")
+    }
+
+    override fun onRecorderLessThanSecond() {
+        Log.i(TAG, "onRecorderLessThanSecond: ")
+    }
+
+    override fun onRecorderNeedPermission() {
+        Log.i(TAG, "onRecorderNeedPermission: ")
+    }
+
 }

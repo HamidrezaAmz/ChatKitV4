@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import com.devlomi.record_view.RecordView
 import ir.vasl.chatkitv4core.databinding.LayoutChatkitV4Binding
 import ir.vasl.chatkitv4core.model.MessageModel
 import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4InputCallback
@@ -84,6 +85,10 @@ class ChatKitV4 @kotlin.jvm.JvmOverloads constructor(
 
     fun unBlockChatKitV4Input() {
         binding.chatKitV4Input.unBlockChatKitV4Input()
+    }
+
+    fun getInputRecordView(): RecordView {
+        return binding.chatKitV4Input.getRecordView()
     }
 
 }

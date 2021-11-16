@@ -7,4 +7,5 @@ public interface ChatKitV4InputCallback {
     fun onRecorderCancel() {}
     fun onRecorderFinish(recordTime: Long, limitReached: Boolean) {}
     fun onRecorderLessThanSecond() {}
+    fun onRecorderNeedPermission() {}
 }

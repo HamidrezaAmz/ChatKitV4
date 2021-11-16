@@ -80,11 +80,14 @@ class ChatKitV4MediaHelper(
                 PermissionHelper.PERMISSION_READ_EXTERNAL_STORAGE,
                 PermissionHelper.PERMISSION_WRITE_EXTERNAL_STORAGE
             )
+            // todo : permission should be add again...
+            /*
             if (!PermissionHelper.checkPermissionListIsGranted(listOfPermission)) {
                 mediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.ERROR)
                 Log.i(TAG, "downloadAndPlay -> ERROR | checkPermissionListIsGranted : false")
                 return
             }
+            */
             // so lets download the file
             downloadFile()
         } else {

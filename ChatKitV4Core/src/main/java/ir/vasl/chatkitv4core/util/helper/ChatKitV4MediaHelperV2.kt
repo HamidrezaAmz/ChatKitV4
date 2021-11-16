@@ -1,6 +1,5 @@
 package ir.vasl.chatkitv4core.util.helper
 
-import android.util.Log
 import com.huxq17.download.core.DownloadInfo
 import ir.vasl.chatkitv4core.model.MessageModel
 import ir.vasl.chatkitv4core.model.chatkitv4enums.MediaHelperStatus
@@ -129,11 +128,14 @@ object ChatKitV4MediaHelperV2 : MediaHelperCallback {
                 PermissionHelper.PERMISSION_READ_EXTERNAL_STORAGE,
                 PermissionHelper.PERMISSION_WRITE_EXTERNAL_STORAGE
             )
+            // todo : permission checker should be added again
+            /*
             if (!PermissionHelper.checkPermissionListIsGranted(listOfPermission)) {
                 mediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.ERROR)
                 Log.i(TAG, "downloadAndPlay -> ERROR | checkPermissionListIsGranted : false")
                 return
             }
+            */
             // so lets download the file
             chatKitV4DownloadManager.setMediaHelperCallback(this)
             chatKitV4DownloadManager.startDownload(messageModel?.remoteFileUrl)

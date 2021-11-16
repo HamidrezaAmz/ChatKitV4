@@ -1,6 +1,7 @@
 package ir.vasl.chatkitv4core.view
 
 import android.content.Context
+import android.os.Build
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.AttributeSet
@@ -9,8 +10,12 @@ import android.widget.FrameLayout
 import androidx.core.content.res.ResourcesCompat
 import com.devlomi.record_view.OnRecordListener
 import com.devlomi.record_view.RecordPermissionHandler
+import com.devlomi.record_view.RecordView
 import ir.vasl.chatkitv4core.R
 import ir.vasl.chatkitv4core.databinding.LayoutChatkitV4InputBinding
+import ir.vasl.chatkitv4core.util.helper.PermissionHelper
+import ir.vasl.chatkitv4core.util.helper.PermissionHelper.PERMISSION_RECORDE_AUDIO
+import ir.vasl.chatkitv4core.util.helper.PermissionHelper.PERMISSION_WRITE_EXTERNAL_STORAGE
 import ir.vasl.chatkitv4core.util.publicExtentions.setTypeface
 import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4InputCallback
 
@@ -65,7 +70,21 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
         })
         binding.recordView.setRecordPermissionHandler(object : RecordPermissionHandler {
             override fun isPermissionGranted(): Boolean {
-                return true
+                if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
+                    return true;
+                }
+
+                if (PermissionHelper.checkPermissionListIsGranted(
+                        context,
+                        listOf(PERMISSION_WRITE_EXTERNAL_STORAGE, PERMISSION_RECORDE_AUDIO)
+                    )
+                ) {
+                    return true
+                }
+
+                if (::chatKitV4InputCallback.isInitialized)
+                    chatKitV4InputCallback.onRecorderNeedPermission()
+                return false
             }
         })
     }
@@ -121,6 +140,10 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
 
     fun unBlockChatKitV4Input() {
         binding.constraintLayoutUserBlocker.visibility = GONE
+    }
+
+    fun getRecordView(): RecordView {
+        return binding.recordView
     }
 
 }
