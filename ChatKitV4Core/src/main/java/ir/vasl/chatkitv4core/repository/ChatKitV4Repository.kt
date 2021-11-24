@@ -1,6 +1,6 @@
 package ir.vasl.chatkitv4core.repository
 
-import android.app.Application
+import android.content.Context
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -10,11 +10,11 @@ import ir.vasl.chatkitv4core.util.PublicValue.CHATKIR_V4_PAGE_SIZE
 import kotlinx.coroutines.flow.Flow
 
 class ChatKitV4Repository(
-    private val application: Application,
+    private val context: Context,
     private val chatId: String
 ) {
 
-    private var chatKitV4Database: ChatKitV4Database = ChatKitV4Database.getDatabase(application)
+    private var chatKitV4Database: ChatKitV4Database = ChatKitV4Database.getDatabase(context)
 
     fun getMessageListFromDatabase(): Flow<PagingData<MessageModel>> {
         return Pager(
@@ -37,6 +37,10 @@ class ChatKitV4Repository(
 
     fun addMessageListIntoDatabase(messageModelList: List<MessageModel>) {
         chatKitV4Database.getMessageDao().insertAll(messageModelList)
+    }
+
+    fun updateMessageModel(messageModel: MessageModel) {
+        chatKitV4Database.getMessageDao().update(messageModel)
     }
 
     fun clearAll() {

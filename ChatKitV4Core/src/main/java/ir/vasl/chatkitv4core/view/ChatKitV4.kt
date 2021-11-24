@@ -51,6 +51,10 @@ class ChatKitV4 @kotlin.jvm.JvmOverloads constructor(
         binding.chatKitV4List.addMessageModelListIntoDatabase(messageModelList)
     }
 
+    fun updateMessageModel(messageModel: MessageModel) {
+        binding.chatKitV4List.updateMessageModel(messageModel)
+    }
+
     fun clearAll() {
         binding.chatKitV4List.clearAll()
     }

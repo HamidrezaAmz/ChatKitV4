@@ -3,72 +3,65 @@ package ir.vasl.chatkitv4core.util.downloadmanager
 import android.util.Log
 import com.huxq17.download.Pump
 import com.huxq17.download.core.DownloadListener
-import ir.vasl.chatkitv4core.model.chatkitv4enums.MediaHelperStatus
+import ir.vasl.chatkitv4core.model.MessageModel
+import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageConditionStatus
 import ir.vasl.chatkitv4core.util.PublicValue
 import ir.vasl.chatkitv4core.util.player.interfaces.MediaHelperCallback
 import okhttp3.Request
 
 class ChatKitV4DownloadManager(
-    private var newMediaHelperCallback: MediaHelperCallback? = null
+    private var mediaHelperCallback: MediaHelperCallback? = null
 ) {
 
-    private val TAG = "ChatKitV4DownloadMng"
-    private var mediaHelperCallback: MediaHelperCallback? = null
+    private val TAG = "ChatKitV4DownloadManage"
 
     init {
-        this.mediaHelperCallback = newMediaHelperCallback
-    }
+        // this is not possible but, this shit is listening to download scenario! :))
+        val downloadObserver: DownloadListener = object : DownloadListener() {
 
-    fun setMediaHelperCallback(newMediaHelperCallback: MediaHelperCallback? = null) {
-        this.mediaHelperCallback = newMediaHelperCallback
-    }
+            override fun onProgress(progress: Int) {
+                Log.i(
+                    TAG,
+                    "onProgress: ${downloadInfo.progress} % | downloadId: ${downloadInfo.id}"
+                )
+                mediaHelperCallback?.onMediaStateDownloaderUpdated(
+                    messageId = downloadInfo.id,
+                    messageConditionStatus = MessageConditionStatus.DOWNLOAD_IN_PROGRESS,
+                    downloadInfo = downloadInfo
+                )
+            }
 
-    fun startDownload(remoteFileUrl: String?) {
+            override fun onSuccess() {
+                Log.i(TAG, "onSuccess: ${downloadInfo.filePath}")
+                mediaHelperCallback?.onMediaStateDownloaderUpdated(
+                    messageId = downloadInfo.id,
+                    messageConditionStatus = MessageConditionStatus.DOWNLOAD_SUCCEED,
+                    downloadInfo = downloadInfo
+                )
+            }
 
-        if (remoteFileUrl.isNullOrEmpty()) {
-            mediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.DOWNLOAD_FAILED)
-            Log.i(TAG, "startDownload -> DOWNLOAD_FAILED | remoteFileUrl is null")
-            return
+            override fun onFailed() {
+                Log.i(TAG, "onFailed: ${downloadInfo.filePath}")
+                mediaHelperCallback?.onMediaStateDownloaderUpdated(
+                    messageId = downloadInfo.id,
+                    messageConditionStatus = MessageConditionStatus.DOWNLOAD_FAILED,
+                    downloadInfo = downloadInfo
+                )
+            }
         }
+        downloadObserver.enable()
+    }
 
-        mediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.DOWNLOAD_STARTED)
-
-        Pump.newRequest(remoteFileUrl)
-            .setId(remoteFileUrl) // we pass remoteFileUrl for unique file id for download manager
+    fun submitNewDownloadRequest(messageModel: MessageModel) {
+        Pump.newRequest(messageModel.remoteFileUrl)
+            .setId(messageModel.id)
             .setRequestBuilder(Request.Builder())
             .tag(PublicValue.SAMPLE_FILE_TAG)
-            .listener(object : DownloadListener() {
-
-                override fun onProgress(progress: Int) {
-                    mediaHelperCallback?.onMediaStateUpdated(
-                        mediaHelperStatus = MediaHelperStatus.DOWNLOAD_IN_PROGRESS,
-                        downloadInfo = downloadInfo
-                    )
-                }
-
-                override fun onSuccess() {
-                    mediaHelperCallback?.onMediaStateUpdated(
-                        mediaHelperStatus = MediaHelperStatus.DOWNLOAD_SUCCESS,
-                        downloadInfo = downloadInfo
-                    )
-                }
-
-                override fun onFailed() {
-                    mediaHelperCallback?.onMediaStateUpdated(
-                        mediaHelperStatus = MediaHelperStatus.DOWNLOAD_FAILED,
-                        downloadInfo = downloadInfo
-                    )
-                }
-            })
             .submit()
     }
 
-    fun terminateDownload(downloadId: String?) {
-        if (!downloadId.isNullOrEmpty()) {
-            Pump.stop(downloadId)
-            mediaHelperCallback?.onMediaStateUpdated(mediaHelperStatus = MediaHelperStatus.DOWNLOAD_STOPPED)
-            mediaHelperCallback = null // to fix Pump bug! onProgress call after terminate
-        }
+    fun stopDownload(messageModel: MessageModel?) {
+        Pump.stop(messageModel?.id)
     }
 
 }

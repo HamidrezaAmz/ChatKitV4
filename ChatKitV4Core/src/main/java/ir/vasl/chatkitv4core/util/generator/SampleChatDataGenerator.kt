@@ -26,7 +26,7 @@ class SampleChatDataGenerator {
             order: Int = 0
         ): MessageModel {
             return MessageModel(
-                id = getId(),
+                id = getStrId(),
                 createAt = System.currentTimeMillis(),
                 title = getTitle(),
                 subTitle = getSubTitle(),
@@ -43,7 +43,7 @@ class SampleChatDataGenerator {
             messageContentType: MessageContentType = MessageContentType.TEXT
         ): MessageModel {
             return MessageModel(
-                id = getId(),
+                id = getStrId(),
                 createAt = System.currentTimeMillis(),
                 title = getTitle(),
                 subTitle = getSubTitle(),
@@ -65,6 +65,10 @@ class SampleChatDataGenerator {
 
         private fun getId(): Int {
             return SampleRandomIdGenerator.getRandomIntId()
+        }
+
+        private fun getStrId(): String {
+            return SampleRandomIdGenerator.getRandomStrId()
         }
 
         private fun getIncreasingId(): Int {

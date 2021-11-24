@@ -11,14 +11,15 @@ import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageContentType
 import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageOwnerType
 import ir.vasl.chatkitv4core.util.ChatStyle
 import ir.vasl.chatkitv4core.view.adapter.viewholder.*
-import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4ListCallback
+import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4ListAdapterCallback
 
 class ChatKitV4MessageAdapter(
     private var chatStyle: ChatStyle,
-    private var chatKitV4ListCallback: ChatKitV4ListCallback? = null
+    private var chatKitV4ListAdapterCallback: ChatKitV4ListAdapterCallback? = null
 ) : PagingDataAdapter<MessageModel, RecyclerView.ViewHolder>(DIFF_UTILS) {
 
     companion object {
+
         val DIFF_UTILS = object : DiffUtil.ItemCallback<MessageModel>() {
             override fun areItemsTheSame(oldItem: MessageModel, newItem: MessageModel): Boolean {
                 return oldItem.id == newItem.id
@@ -30,67 +31,71 @@ class ChatKitV4MessageAdapter(
         }
     }
 
+    fun initializeChatKitV4ListCallback(chatKitV4ListAdapterCallback: ChatKitV4ListAdapterCallback) {
+        this.chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
+    }
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
 
         return when (viewType) {
 
             // alpha messages scope
             MessageOwnerType.ALPHA_TEXT.ordinal -> {
-                ViewHolderSelfTextMessage(
+                ViewHolderAlphaTextMessage(
                     view = LayoutInflater.from(parent.context)
                         .inflate(chatStyle.alphaTextLayoutId, parent, false),
-                    chatKitV4ListCallback = chatKitV4ListCallback
+                    chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
             MessageOwnerType.ALPHA_VOICE.ordinal -> {
-                ViewHolderSelfVoiceMessage(
+                ViewHolderAlphaVoiceMessage(
                     view = LayoutInflater.from(parent.context)
                         .inflate(chatStyle.alphaVoiceLayoutId, parent, false),
-                    chatKitV4ListCallback = chatKitV4ListCallback
+                    chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
             MessageOwnerType.ALPHA_VIDEO.ordinal -> {
-                ViewHolderSelfTextMessage(
+                ViewHolderAlphaTextMessage(
                     view = LayoutInflater.from(parent.context)
                         .inflate(chatStyle.alphaTextLayoutId, parent, false),
-                    chatKitV4ListCallback = chatKitV4ListCallback
+                    chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
             MessageOwnerType.ALPHA_IMAGE.ordinal -> {
-                ViewHolderSelfTextMessage(
+                ViewHolderAlphaTextMessage(
                     view = LayoutInflater.from(parent.context)
                         .inflate(chatStyle.alphaTextLayoutId, parent, false),
-                    chatKitV4ListCallback = chatKitV4ListCallback
+                    chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
 
             // beta messages scope
             MessageOwnerType.BETA_TEXT.ordinal -> {
-                ViewHolderOtherTextMessage(
+                ViewHolderBetaTextMessage(
                     LayoutInflater.from(parent.context)
                         .inflate(chatStyle.betaTextLayoutId, parent, false),
-                    chatKitV4ListCallback = chatKitV4ListCallback
+                    chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
             MessageOwnerType.BETA_VOICE.ordinal -> {
-                ViewHolderOtherVoiceMessage(
+                ViewHolderBetaVoiceMessage(
                     LayoutInflater.from(parent.context)
                         .inflate(chatStyle.betaVoiceLayoutId, parent, false),
-                    chatKitV4ListCallback = chatKitV4ListCallback
+                    chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
             MessageOwnerType.BETA_VIDEO.ordinal -> {
-                ViewHolderOtherTextMessage(
+                ViewHolderBetaTextMessage(
                     LayoutInflater.from(parent.context)
                         .inflate(chatStyle.betaTextLayoutId, parent, false),
-                    chatKitV4ListCallback = chatKitV4ListCallback
+                    chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
             MessageOwnerType.BETA_IMAGE.ordinal -> {
-                ViewHolderOtherTextMessage(
+                ViewHolderBetaTextMessage(
                     LayoutInflater.from(parent.context)
                         .inflate(chatStyle.betaTextLayoutId, parent, false),
-                    chatKitV4ListCallback = chatKitV4ListCallback
+                    chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
 
@@ -115,16 +120,16 @@ class ChatKitV4MessageAdapter(
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val messageModel = getItem(position)
         when (holder) {
-            is ViewHolderSelfTextMessage -> {
+            is ViewHolderAlphaTextMessage -> {
                 holder.bind(messageModel)
             }
-            is ViewHolderSelfVoiceMessage -> {
+            is ViewHolderAlphaVoiceMessage -> {
                 holder.bind(messageModel)
             }
-            is ViewHolderOtherTextMessage -> {
+            is ViewHolderBetaTextMessage -> {
                 holder.bind(messageModel)
             }
-            is ViewHolderOtherVoiceMessage -> {
+            is ViewHolderBetaVoiceMessage -> {
                 holder.bind(messageModel)
             }
             is ViewHolderSystemMessage -> {
@@ -199,8 +204,5 @@ class ChatKitV4MessageAdapter(
         }
     }
 
-    fun initializeChatKitV4ListCallback(chatKitV4ListCallback: ChatKitV4ListCallback) {
-        this.chatKitV4ListCallback = chatKitV4ListCallback
-    }
 
 }

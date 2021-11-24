@@ -15,6 +15,8 @@
         <entry key="ChatKitV4Core/src/main/res/drawable/shape_other_bubble_temp.xml" value="0.2948717948717949" />
         <entry key="ChatKitV4Core/src/main/res/drawable/shape_round_recorder.xml" value="0.2675925925925926" />
         <entry key="ChatKitV4Core/src/main/res/font/app_font.xml" value="0.25277777777777777" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_alpha_voice_layout.xml" value="0.29791666666666666" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_beta_voice_layout.xml" value="0.2833333333333333" />
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_not_supported_bubble.xml" value="0.2833333333333333" />
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_not_supported_layout.xml" value="0.29791666666666666" />
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_other_bubble.xml" value="0.2833333333333333" />
@@ -42,6 +44,7 @@
         <entry key="ChatKitV4Core/src/main/res/layout/view_load_states_error.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/drawable/border_shadow.xml" value="0.2948717948717949" />
         <entry key="app/src/main/res/drawable/ic_baseline_play_arrow_24.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/drawable/ic_baseline_play_arrow_colored_24.xml" value="0.2935185185185185" />
         <entry key="app/src/main/res/drawable/ic_baseline_shopping_basket_24.xml" value="0.26944444444444443" />
         <entry key="app/src/main/res/drawable/seekbar_progress.xml" value="0.2948717948717949" />
         <entry key="app/src/main/res/drawable/seekbar_style.xml" value="0.2935185185185185" />
@@ -56,6 +59,7 @@
         <entry key="app/src/main/res/drawable/shape_self_bubble.xml" value="0.29074074074074074" />
         <entry key="app/src/main/res/drawable/shape_self_bubble_selected.xml" value="0.28888888888888886" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18888888888888888" />
+        <entry key="app/src/main/res/layout/alpha_voice_layout.xml" value="0.2561903676772917" />
         <entry key="app/src/main/res/layout/other_bubble.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/layout/other_text_layout.xml" value="0.29791666666666666" />
         <entry key="app/src/main/res/layout/other_voice_layout.xml" value="0.2833333333333333" />
