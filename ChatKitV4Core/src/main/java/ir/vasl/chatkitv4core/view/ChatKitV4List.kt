@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Handler
 import android.os.Looper
 import android.util.AttributeSet
+import android.util.Log
 import android.view.LayoutInflater
 import android.widget.FrameLayout
 import androidx.core.view.isVisible
@@ -12,9 +13,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import ir.vasl.chatkitv4core.databinding.LayoutChatkitV4ListBinding
 import ir.vasl.chatkitv4core.model.MessageModel
+import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageConditionStatus
 import ir.vasl.chatkitv4core.util.ChatStyle
+import ir.vasl.chatkitv4core.util.helper.ChatKitV4MediaHelper
+import ir.vasl.chatkitv4core.util.player.interfaces.MediaHelperCallback
 import ir.vasl.chatkitv4core.view.adapter.ChatKitV4LoadStateAdapter
 import ir.vasl.chatkitv4core.view.adapter.ChatKitV4MessageAdapter
+import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4ListAdapterCallback
 import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4ListCallback
 import ir.vasl.chatkitv4core.viewmodel.ChatKitV4ViewModel
 import kotlinx.coroutines.Job
@@ -24,27 +29,95 @@ class ChatKitV4List @kotlin.jvm.JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0
-) : FrameLayout(context, attrs, defStyleAttr) {
+) : FrameLayout(context, attrs, defStyleAttr),
+    ChatKitV4ListAdapterCallback,
+    MediaHelperCallback {
 
     private val TAG = "ChatKitV4List"
 
     private var binding = LayoutChatkitV4ListBinding.inflate(LayoutInflater.from(context))
 
     private lateinit var chatStyle: ChatStyle
-
-    private lateinit var chatKitV4MessageAdapter: ChatKitV4MessageAdapter
-
     private lateinit var chatKitV4ViewModel: ChatKitV4ViewModel
-
+    private lateinit var chatKitV4MessageAdapter: ChatKitV4MessageAdapter
+    private lateinit var chatKitV4ListCallback: ChatKitV4ListCallback
     private lateinit var jobChatKit: Job
 
-    private lateinit var chatKitV4ListCallback: ChatKitV4ListCallback
+    private val chatKitV4MediaHelper = ChatKitV4MediaHelper(this)
 
     init {
         addView(binding.root)
         initializeParsers(attrs)
         initializeChatKitV4List()
         initializeChatKitV4Listeners()
+    }
+
+    override fun onMessageClicked(messageModel: MessageModel?) {
+        if (::chatKitV4ListCallback.isInitialized)
+            chatKitV4ListCallback.onMessageClicked(messageModel)
+    }
+
+    override fun onMessagePressed(messageModel: MessageModel?) {
+        if (::chatKitV4ListCallback.isInitialized)
+            chatKitV4ListCallback.onMessagePressed(messageModel)
+    }
+
+    override fun onPlayPauseClicked(messageModel: MessageModel?) {
+
+        if (::chatKitV4ListCallback.isInitialized)
+            chatKitV4ListCallback.onPlayPauseClicked(messageModel)
+
+        messageModel?.let {
+            // update item in database
+            chatKitV4ViewModel.updateMessageModel(it)
+
+            // sync new states with player
+            val playerCondition = messageModel.messageConditionStatus
+            if (playerCondition == MessageConditionStatus.PLAYER_STARTED.name)
+                chatKitV4MediaHelper.playVoice(messageModel)
+            else
+                chatKitV4MediaHelper.stopVoice()
+        }
+    }
+
+    override fun onFileClicked(messageModel: MessageModel?) {
+        if (::chatKitV4ListCallback.isInitialized)
+            chatKitV4ListCallback.onFileClicked(messageModel)
+    }
+
+    override fun onDownloadFileClicked(messageModel: MessageModel?) {
+        if (::chatKitV4ListCallback.isInitialized)
+            chatKitV4ListCallback.onDownloadFileClicked(messageModel)
+
+        messageModel?.let {
+            // update item in database
+            chatKitV4ViewModel.updateMessageModel(it)
+
+            // sync new states with player
+            val downloaderCondition = messageModel.messageConditionStatus
+            if (downloaderCondition == MessageConditionStatus.DOWNLOAD_STARTED.name) {
+                chatKitV4MediaHelper.downloadFile(messageModel)
+            } else {
+                chatKitV4MediaHelper.stopDownloadFile(messageModel)
+            }
+        }
+    }
+
+    override fun onMediaStateUpdated(
+        messageModel: MessageModel,
+        messageConditionStatus: MessageConditionStatus,
+        progressPlayer: Int?,
+        progressDownloader: Int?
+    ) {
+        messageModel.let {
+            // update item in database
+            Log.i(TAG, "onMediaStateUpdated: mediaHelperStatus -> ${messageConditionStatus.name}")
+
+            // add delay on update | this will update the view! Really!!! :|
+            Handler(Looper.getMainLooper()).postDelayed({
+                chatKitV4ViewModel.updateMessageModel(it)
+            }, 500)
+        }
     }
 
     private fun initializeParsers(attributeSet: AttributeSet?) {
@@ -98,13 +171,6 @@ class ChatKitV4List @kotlin.jvm.JvmOverloads constructor(
         })
     }
 
-    suspend fun initializeChatKitV4ListViewModel(inputChatKitV4ViewModel: ChatKitV4ViewModel) {
-        this.chatKitV4ViewModel = inputChatKitV4ViewModel
-        this.chatKitV4ViewModel.messageListFromDatabase.collectLatest {
-            chatKitV4MessageAdapter.submitData(it)
-        }
-    }
-
     private fun showEmptyView(showEmptyList: Boolean) {
         binding.includeEmptyView.root.isVisible = showEmptyList
     }
@@ -113,9 +179,16 @@ class ChatKitV4List @kotlin.jvm.JvmOverloads constructor(
         binding.includeErrorView.root.isVisible = showErrorView
     }
 
+    suspend fun initializeChatKitV4ListViewModel(inputChatKitV4ViewModel: ChatKitV4ViewModel) {
+        this.chatKitV4ViewModel = inputChatKitV4ViewModel
+        this.chatKitV4ViewModel.messageListFromDatabase.collectLatest {
+            chatKitV4MessageAdapter.submitData(it)
+        }
+    }
+
     fun initializeChatKitV4ListCallback(chatKitV4ListCallback: ChatKitV4ListCallback) {
         this.chatKitV4ListCallback = chatKitV4ListCallback
-        this.chatKitV4MessageAdapter.initializeChatKitV4ListCallback(chatKitV4ListCallback)
+        this.chatKitV4MessageAdapter.initializeChatKitV4ListCallback(this)
     }
 
     fun addMessageModelIntoDatabase(messageModel: MessageModel) {
@@ -125,6 +198,10 @@ class ChatKitV4List @kotlin.jvm.JvmOverloads constructor(
 
     fun addMessageModelListIntoDatabase(messageModelList: List<MessageModel>) {
         chatKitV4ViewModel.addMessageListIntoDatabase(messageModelList)
+    }
+
+    fun updateMessageModel(messageModel: MessageModel) {
+        chatKitV4ViewModel.updateMessageModel(messageModel)
     }
 
     fun clearAll() {

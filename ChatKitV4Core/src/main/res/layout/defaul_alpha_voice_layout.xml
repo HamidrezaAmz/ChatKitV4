@@ -54,6 +54,16 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@id/sb_voice" />
 
+        <ProgressBar
+            android:id="@id/pb_upload"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_margin="@dimen/margin_8dp"
+            app:layout_constraintBottom_toBottomOf="@id/ib_play_pause"
+            app:layout_constraintEnd_toEndOf="@id/ib_play_pause"
+            app:layout_constraintStart_toStartOf="@id/ib_play_pause"
+            app:layout_constraintTop_toTopOf="@id/ib_play_pause" />
+
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@id/tv_timer"
             android:layout_width="wrap_content"
@@ -75,6 +85,7 @@
             app:layout_constraintBottom_toBottomOf="@id/tv_timer"
             app:layout_constraintStart_toEndOf="@id/tv_timer"
             app:layout_constraintTop_toTopOf="@id/tv_timer" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

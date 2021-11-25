@@ -37,6 +37,42 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <androidx.appcompat.widget.AppCompatImageButton
+                android:id="@id/ib_retry"
+                android:layout_width="@dimen/height_50dp"
+                android:layout_height="@dimen/height_50dp"
+                android:layout_marginEnd="@dimen/margin_18dp"
+                android:background="@drawable/shape_round_with_shadow"
+                android:clickable="true"
+                android:focusable="true"
+                android:foreground="?android:attr/selectableItemBackground"
+                android:src="@drawable/ic_baseline_arrow_downward_24"
+                android:tint="@color/teal_500"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ProgressBar
+                android:id="@id/pb_download"
+                android:layout_width="@dimen/height_50dp"
+                android:layout_height="@dimen/height_50dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/ib_play_pause"
+                app:layout_constraintEnd_toEndOf="@id/ib_play_pause"
+                app:layout_constraintStart_toStartOf="@id/ib_play_pause"
+                app:layout_constraintTop_toTopOf="@id/ib_play_pause" />
+
+            <ProgressBar
+                android:id="@id/pb_upload"
+                android:layout_width="@dimen/height_50dp"
+                android:layout_height="@dimen/height_50dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/ib_play_pause"
+                app:layout_constraintEnd_toEndOf="@id/ib_play_pause"
+                app:layout_constraintStart_toStartOf="@id/ib_play_pause"
+                app:layout_constraintTop_toTopOf="@id/ib_play_pause" />
+
             <SeekBar
                 android:id="@id/sb_voice"
                 android:layout_width="@dimen/max_width_progressbar"

@@ -2,10 +2,13 @@
 <resources>
     <item name="tv_title" type="id" />
     <item name="tv_sub_title" type="id" />
+    <item name="ib_play_pause" type="id" />
     <item name="tv_date" type="id" />
     <item name="tv_message" type="id" />
     <item name="iv_download" type="id" />
     <item name="tv_timer" type="id" />
     <item name="pb_download" type="id" />
     <item name="sb_voice" type="id" />
+    <item name="pb_upload" type="id" />
+    <item name="ib_retry" type="id" />
 </resources>

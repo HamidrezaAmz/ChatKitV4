@@ -24,6 +24,10 @@ class ChatKitV4ViewModel constructor(
         repository.addMessageListIntoDatabase(messageModelList)
     }
 
+    fun updateMessageModel(messageModel: MessageModel) {
+        repository.updateMessageModel(messageModel)
+    }
+
     fun clearAll() {
         repository.clearAll()
     }

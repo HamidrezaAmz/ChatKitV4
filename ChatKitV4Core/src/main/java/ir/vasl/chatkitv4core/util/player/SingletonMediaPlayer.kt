@@ -3,7 +3,6 @@ package ir.vasl.chatkitv4core.util.player
 import android.media.MediaPlayer
 import android.media.MediaPlayer.*
 import android.util.Log
-import ir.vasl.chatkitv4core.model.chatkitv4enums.MediaHelperStatus
 import ir.vasl.chatkitv4core.util.player.interfaces.MediaHelperCallback
 import ir.vasl.chatkitv4core.util.player.model.MediaPlayerInfo
 import java.io.IOException
@@ -46,7 +45,7 @@ class SingletonMediaPlayer : OnCompletionListener, OnPreparedListener, OnErrorLi
     }
 
     fun refreshMediaPlayerInfo() {
-        currMediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.PLAYER_STOPPED)
+        // currMediaHelperCallback?.onMediaStateUpdated(null, MediaHelperStatus.PLAYER_STOPPED)
         this.currMediaPlayerInfo = null
         if (getIsPlaying())
             stopSound()
@@ -81,10 +80,10 @@ class SingletonMediaPlayer : OnCompletionListener, OnPreparedListener, OnErrorLi
                     "onBufferingUpdate: $i"
                 )
             }
-            currMediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.PLAYER_PLAYING)
+            // currMediaHelperCallback?.onMediaStateUpdated(null, MediaHelperStatus.PLAYER_PLAYING)
         } catch (e: IOException) {
             e.printStackTrace()
-            currMediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.ERROR)
+            // currMediaHelperCallback?.onMediaStateUpdated(null, MediaHelperStatus.ERROR)
         }
     }
 
@@ -130,10 +129,10 @@ class SingletonMediaPlayer : OnCompletionListener, OnPreparedListener, OnErrorLi
                 mediaPlayer?.reset()
                 mediaPlayer?.release()
             }
-            currMediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.PLAYER_PLAYING)
+            //currMediaHelperCallback?.onMediaStateUpdated(null, MediaHelperStatus.PLAYER_PLAYING)
         } catch (e: IOException) {
             e.printStackTrace()
-            currMediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.ERROR)
+            // currMediaHelperCallback?.onMediaStateUpdated(null, MediaHelperStatus.ERROR)
         }
     }
 
@@ -146,20 +145,20 @@ class SingletonMediaPlayer : OnCompletionListener, OnPreparedListener, OnErrorLi
     }
 
     override fun onCompletion(mediaPlayer: MediaPlayer) {
-        currMediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.PLAYER_COMPLETED)
+        // currMediaHelperCallback?.onMediaStateUpdated(null, MediaHelperStatus.PLAYER_COMPLETED)
         Log.i(TAG, "onCompletion -> COMPLETED")
         refreshMediaPlayerInfo()
     }
 
     override fun onError(mediaPlayer: MediaPlayer, i: Int, i1: Int): Boolean {
-        currMediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.ERROR)
+        // currMediaHelperCallback?.onMediaStateUpdated(null, MediaHelperStatus.ERROR)
         Log.i(TAG, "onCompletion -> ERROR")
         refreshMediaPlayerInfo()
         return false
     }
 
     override fun onPrepared(mediaPlayer: MediaPlayer) {
-        currMediaHelperCallback?.onMediaStateUpdated(MediaHelperStatus.PLAYER_PREPARED)
+        // currMediaHelperCallback?.onMediaStateUpdated(null, MediaHelperStatus.PLAYER_PREPARED)
         Log.i(TAG, "onCompletion -> PREPARED | Player started dg")
     }
 }

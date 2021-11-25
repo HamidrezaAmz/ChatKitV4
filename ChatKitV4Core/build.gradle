@@ -87,7 +87,7 @@ dependencies {
 
     // Pump
     implementation 'com.huxq17.pump:download:1.3.10'
-    implementation 'com.squareup.okhttp3:okhttp:lastversion'
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
 
     // RecordView
     implementation 'com.github.3llomi:RecordView:3.0.2'

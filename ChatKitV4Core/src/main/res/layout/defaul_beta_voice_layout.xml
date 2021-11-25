@@ -42,7 +42,7 @@
             app:layout_constraintTop_toBottomOf="@id/tv_title" />
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/ib_play_pause"
+            android:id="@id/ib_play_pause"
             android:layout_width="@dimen/height_50dp"
             android:layout_height="@dimen/height_50dp"
             android:layout_marginEnd="@dimen/margin_18dp"

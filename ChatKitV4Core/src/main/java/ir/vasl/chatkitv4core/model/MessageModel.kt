@@ -3,6 +3,7 @@ package ir.vasl.chatkitv4core.model
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageConditionStatus
 import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageContentType
 import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageOwnerType
 import ir.vasl.chatkitv4core.util.helper.DateTimeHelper
@@ -12,7 +13,7 @@ data class MessageModel(
 
     @PrimaryKey
     @ColumnInfo(name = "id")
-    val id: Int,
+    val id: String,
 
     @ColumnInfo(name = "createdAt")
     val createAt: Long,
@@ -38,10 +39,22 @@ data class MessageModel(
     @ColumnInfo(name = "remoteFileUrl")
     val remoteFileUrl: String = "",
 
+    @ColumnInfo(name = "localFileAddress")
+    var localFileAddress: String = "",
+
     @ColumnInfo(name = "chatId")
     val chatId: String,
 
-    ) {
+    @ColumnInfo(name = "progressPlayer")
+    var progressPlayer: Int = 0,
+
+    @ColumnInfo(name = "progressDownloader")
+    var progressDownloader: Int = 0,
+
+    @ColumnInfo(name = "messageConditionStatus")
+    var messageConditionStatus: String = MessageConditionStatus.IDLE.name
+
+) {
 
     fun getHumanReadableDate(): String {
         return DateTimeHelper.getDateCurrentTimeZone(createAt)
