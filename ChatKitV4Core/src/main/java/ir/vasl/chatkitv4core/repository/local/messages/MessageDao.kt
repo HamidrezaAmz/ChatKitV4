@@ -28,4 +28,7 @@ interface MessageDao {
     @Update
     fun update(movieEntity: MessageModel)
 
+    @Query("UPDATE table_messages SET messageConditionStatus=:conditionStatus WHERE id = :messageId")
+    fun update(messageId: String, conditionStatus: String)
+
 }

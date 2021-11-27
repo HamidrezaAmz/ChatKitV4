@@ -5,6 +5,7 @@ import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import ir.vasl.chatkitv4core.model.MessageModel
+import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageConditionStatus
 import ir.vasl.chatkitv4core.repository.local.ChatKitV4Database
 import ir.vasl.chatkitv4core.util.PublicValue.CHATKIR_V4_PAGE_SIZE
 import kotlinx.coroutines.flow.Flow
@@ -41,6 +42,10 @@ class ChatKitV4Repository(
 
     fun updateMessageModel(messageModel: MessageModel) {
         chatKitV4Database.getMessageDao().update(messageModel)
+    }
+
+    fun updateMessageCondition(messageId: String, messageConditionStatus: MessageConditionStatus) {
+        chatKitV4Database.getMessageDao().update(messageId, messageConditionStatus.name)
     }
 
     fun clearAll() {

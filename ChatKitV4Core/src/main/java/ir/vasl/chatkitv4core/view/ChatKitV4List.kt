@@ -204,6 +204,10 @@ class ChatKitV4List @kotlin.jvm.JvmOverloads constructor(
         chatKitV4ViewModel.updateMessageModel(messageModel)
     }
 
+    fun updateMessageCondition(messageId: String, messageConditionStatus: MessageConditionStatus) {
+        chatKitV4ViewModel.updateMessageCondition(messageId, messageConditionStatus)
+    }
+
     fun clearAll() {
         chatKitV4ViewModel.clearAll()
     }

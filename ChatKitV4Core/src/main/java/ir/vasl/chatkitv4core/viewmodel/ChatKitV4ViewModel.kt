@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.paging.cachedIn
 import ir.vasl.chatkitv4core.model.MessageModel
+import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageConditionStatus
 import ir.vasl.chatkitv4core.repository.ChatKitV4Repository
 
 class ChatKitV4ViewModel constructor(
@@ -26,6 +27,10 @@ class ChatKitV4ViewModel constructor(
 
     fun updateMessageModel(messageModel: MessageModel) {
         repository.updateMessageModel(messageModel)
+    }
+
+    fun updateMessageCondition(messageId: String, messageConditionStatus: MessageConditionStatus) {
+        repository.updateMessageCondition(messageId, messageConditionStatus)
     }
 
     fun clearAll() {

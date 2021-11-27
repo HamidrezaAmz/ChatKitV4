@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import com.devlomi.record_view.RecordView
 import ir.vasl.chatkitv4core.databinding.LayoutChatkitV4Binding
 import ir.vasl.chatkitv4core.model.MessageModel
+import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageConditionStatus
 import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4InputCallback
 import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4ListCallback
 import ir.vasl.chatkitv4core.viewmodel.ChatKitV4ViewModel
@@ -53,6 +54,10 @@ class ChatKitV4 @kotlin.jvm.JvmOverloads constructor(
 
     fun updateMessageModel(messageModel: MessageModel) {
         binding.chatKitV4List.updateMessageModel(messageModel)
+    }
+
+    fun updateMessageCondition(messageId: String, messageConditionStatus: MessageConditionStatus) {
+        binding.chatKitV4List.updateMessageCondition(messageId, messageConditionStatus)
     }
 
     fun clearAll() {
