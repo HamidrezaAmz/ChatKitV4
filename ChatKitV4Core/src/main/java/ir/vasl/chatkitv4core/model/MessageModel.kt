@@ -25,7 +25,7 @@ data class MessageModel(
     val subTitle: String = "",
 
     @ColumnInfo(name = "avatar")
-    val avatar: String = "",
+    var avatar: String = "",
 
     @ColumnInfo(name = "date")
     val date: String = "",
@@ -37,7 +37,7 @@ data class MessageModel(
     val messageContentType: String = MessageContentType.TEXT.name,
 
     @ColumnInfo(name = "remoteFileUrl")
-    val remoteFileUrl: String = "",
+    var remoteFileUrl: String = "",
 
     @ColumnInfo(name = "localFileAddress")
     var localFileAddress: String = "",
