@@ -20,21 +20,19 @@ class ViewHolderBetaVoiceMessage(
     private var chatKitV4ListAdapterCallback: ChatKitV4ListAdapterCallback? = null
 ) : RecyclerView.ViewHolder(view), MediaHelperCallback {
 
-    private val TAG = "ViewHolderSelfVoiceMsg"
     private var messageModel: MessageModel? = null
-
-    private var currMediaHelperStatus: MessageConditionStatus = MessageConditionStatus.IDLE
-
-    var textviewTitle = view.findViewById(R.id.tv_title) as AppCompatTextView?
-    var textviewSubTitle = view.findViewById(R.id.tv_sub_title) as AppCompatTextView?
-    var textviewTimer = view.findViewById(R.id.tv_timer) as AppCompatTextView?
-    var textviewDate = view.findViewById(R.id.tv_date) as AppCompatTextView?
-    var imageButtonPlayPause = view.findViewById(R.id.ib_play_pause) as AppCompatImageButton?
-    var progressBarDownload = view.findViewById(R.id.pb_download) as ProgressBar?
-    var seekbarVoice = view.findViewById(R.id.sb_voice) as SeekBar?
+    private var tvTitle = view.findViewById(R.id.tv_title) as AppCompatTextView?
+    private var tvSubTitle = view.findViewById(R.id.tv_sub_title) as AppCompatTextView?
+    private var tvTimer = view.findViewById(R.id.tv_timer) as AppCompatTextView?
+    private var tvDate = view.findViewById(R.id.tv_date) as AppCompatTextView?
+    private var ibPlayPause = view.findViewById(R.id.ib_play_pause) as AppCompatImageButton?
+    private var pbDownload = view.findViewById(R.id.pb_download) as ProgressBar?
+    private var sbVoice = view.findViewById(R.id.sb_voice) as SeekBar?
+    private var pbUpload = view.findViewById(R.id.pb_upload) as ProgressBar?
+    private var ibDownload = view.findViewById(R.id.ib_retry) as AppCompatImageButton?
 
     init {
-        seekbarVoice?.isEnabled = false
+        sbVoice?.isEnabled = false
     }
 
     fun bind(messageModel: MessageModel?) {
@@ -43,193 +41,274 @@ class ViewHolderBetaVoiceMessage(
         val title = messageModel?.title
         val subTitle = messageModel?.subTitle
         val date = messageModel?.date
+        val progressPlayer = messageModel?.progressPlayer
 
         // set title
         if (title.isNullOrEmpty()) {
-            textviewTitle?.visibility = View.GONE
+            tvTitle?.visibility = View.GONE
         } else {
-            textviewTitle?.visibility = View.VISIBLE
-            textviewTitle?.text = messageModel.title
+            tvTitle?.visibility = View.VISIBLE
+            tvTitle?.text = title
         }
 
         // set sub title
         if (subTitle.isNullOrEmpty()) {
-            textviewSubTitle?.visibility = View.GONE
+            tvSubTitle?.visibility = View.GONE
         } else {
-            textviewSubTitle?.visibility = View.VISIBLE
-            textviewSubTitle?.text = subTitle
+            tvSubTitle?.visibility = View.VISIBLE
+            tvSubTitle?.text = subTitle
         }
 
         // set date
         if (date.isNullOrEmpty()) {
-            textviewDate?.visibility = View.GONE
+            tvDate?.visibility = View.GONE
         } else {
-            textviewDate?.visibility = View.VISIBLE
-            textviewDate?.text = messageModel.date
+            tvDate?.visibility = View.VISIBLE
+            tvDate?.text = date
         }
+
+        // set progress player
+        sbVoice?.progress = progressPlayer ?: 0
+
+        // set-sync message condition status
+        syncMessageConditionWithUI(messageModel)
 
         // set click listener
-        imageButtonPlayPause?.setOnClickListener {
-            chatKitV4ListAdapterCallback?.onMessageClicked(messageModel)
+        ibPlayPause?.setOnClickListener {
+
+            when (messageModel?.messageConditionStatus) {
+                // if the player is playing sth, so stop it but if the player is on any condition,
+                // try to play and launch player ...
+                MessageConditionStatus.PLAYER_STARTED.name, MessageConditionStatus.PLAYER_IN_PROGRESS.name -> {
+                    messageModel.messageConditionStatus =
+                        MessageConditionStatus.PLAYER_STOPPED.name
+                }
+                else -> {
+                    messageModel?.messageConditionStatus =
+                        MessageConditionStatus.PLAYER_STARTED.name
+                }
+            }
+
+            syncMessageConditionWithUI(messageModel)
+
+            // save changes into database
+            chatKitV4ListAdapterCallback?.onPlayPauseClicked(messageModel)
         }
-        itemView.setOnLongClickListener {
-            chatKitV4ListAdapterCallback?.onMessagePressed(messageModel)
-            false
+
+        ibDownload?.setOnClickListener {
+            messageModel?.messageConditionStatus = MessageConditionStatus.DOWNLOAD_STARTED.name
+            syncMessageConditionWithUI(messageModel)
+            // save changes into database
+            chatKitV4ListAdapterCallback?.onDownloadFileClicked(messageModel)
+        }
+
+        pbDownload?.setOnClickListener {
+            messageModel?.messageConditionStatus = MessageConditionStatus.IDLE.name
+            syncMessageConditionWithUI(messageModel)
+            // save changes into database
+            chatKitV4ListAdapterCallback?.onPlayPauseClicked(messageModel)
+        }
+
+        pbUpload?.setOnClickListener {
+            messageModel?.messageConditionStatus = MessageConditionStatus.IDLE.name
+            syncMessageConditionWithUI(messageModel)
+            // save changes into database
+            chatKitV4ListAdapterCallback?.onPlayPauseClicked(messageModel)
+        }
+
+    }
+
+    private fun syncMessageConditionWithUI(messageModel: MessageModel?) {
+        when (messageModel?.messageConditionStatus ?: MessageConditionStatus.IDLE.name) {
+
+            // global
+            MessageConditionStatus.UNDEFINED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(false)
+                syncMediaPlayerStateWithUI(false)
+                showDownload(true)
+            }
+            MessageConditionStatus.IDLE.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(false)
+                syncMediaPlayerStateWithUI(false)
+                showDownload(true)
+            }
+
+            // uploader
+            MessageConditionStatus.UPLOAD_IN_PROGRESS.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(true)
+                showMediaPlayer(false)
+                syncMediaPlayerStateWithUI(false)
+                showDownload(false)
+            }
+            MessageConditionStatus.UPLOAD_FAILED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(true)
+                syncMediaPlayerStateWithUI(true)
+                showDownload(false)
+
+                // make retry view visible
+                // todo : IMPL retry scenario
+            }
+            MessageConditionStatus.UPLOAD_SUCCEED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(true)
+                syncMediaPlayerStateWithUI(true)
+                showDownload(false)
+            }
+
+            // downloader
+            MessageConditionStatus.DOWNLOAD_IN_PROGRESS.name -> {
+                showDownloadProgress(true)
+                showUploadProgress(false)
+                showMediaPlayer(false)
+                syncMediaPlayerStateWithUI(false)
+                showDownload(false)
+            }
+            MessageConditionStatus.DOWNLOAD_FAILED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(false)
+                syncMediaPlayerStateWithUI(false)
+                showDownload(true)
+            }
+            MessageConditionStatus.DOWNLOAD_NEEDED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(false)
+                syncMediaPlayerStateWithUI(false)
+                showDownload(true)
+            }
+            MessageConditionStatus.DOWNLOAD_SUCCEED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(true)
+                syncMediaPlayerStateWithUI(true)
+                showDownload(false)
+            }
+            MessageConditionStatus.DOWNLOAD_STOPPED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(false)
+                syncMediaPlayerStateWithUI(false)
+                showDownload(true)
+            }
+
+            // player
+            MessageConditionStatus.PLAYER_STARTED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(true)
+                syncMediaPlayerStateWithUI(false)
+                showDownload(false)
+            }
+            MessageConditionStatus.PLAYER_IN_PROGRESS.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(true)
+                syncMediaPlayerStateWithUI(false)
+                showDownload(false)
+            }
+            MessageConditionStatus.PLAYER_PAUSED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(true)
+                syncMediaPlayerStateWithUI(true)
+                showDownload(false)
+            }
+            MessageConditionStatus.PLAYER_STOPPED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(true)
+                syncMediaPlayerStateWithUI(true)
+                showDownload(false)
+            }
+            MessageConditionStatus.PLAYER_FAILED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(true)
+                syncMediaPlayerStateWithUI(true)
+                showDownload(false)
+            }
+            MessageConditionStatus.PLAYER_FINISHED.name -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(true)
+                syncMediaPlayerStateWithUI(true)
+                showDownload(false)
+            }
+
+            else -> {
+                showDownloadProgress(false)
+                showUploadProgress(false)
+                showMediaPlayer(true)
+                syncMediaPlayerStateWithUI(true)
+            }
         }
     }
 
-    /* override fun onMediaStateUpdated(
-         mediaHelperStatus: MediaHelperStatus,
-         downloadInfo: DownloadInfo?,
-         mediaPlayerInfo: MediaPlayerInfo?
-     ) {
-         this.currMediaHelperStatus = mediaHelperStatus
-         when (mediaHelperStatus) {
-             MediaHelperStatus.IDLE -> {
-                 // here we are just idle
-                 showPlayIcon()
-                 showProgress(false)
-                 resetSeekbar()
-                 Log.i(TAG, "onMediaStateUpdated: IDLE")
-             }
-             MediaHelperStatus.ERROR -> {
-                 // here we are just idle
-                 showPlayIcon()
-                 showProgress(false)
-                 Log.i(TAG, "onMediaStateUpdated: ERROR")
-             }
-             MediaHelperStatus.TERMINATE -> {
-                 // we have terminated all actions and progresses
-                 showPlayIcon()
-                 showProgress(false)
-                 resetSeekbar()
-                 Log.i(TAG, "onMediaStateUpdated: TERMINATE")
-             }
-
-             MediaHelperStatus.DOWNLOAD_PREPARING -> {
-                 showPlayIcon(false)
-                 showProgress()
-                 Log.i(TAG, "onMediaStateUpdated: DOWNLOAD_PREPARING")
-             }
-             MediaHelperStatus.DOWNLOAD_STARTED -> {
-                 showPlayIcon(false)
-                 showProgress()
-                 Log.i(TAG, "onMediaStateUpdated: DOWNLOAD_STARTED")
-             }
-             MediaHelperStatus.DOWNLOAD_STOPPED -> {
-                 showPlayIcon()
-                 showProgress(false)
-                 Log.i(TAG, "onMediaStateUpdated: DOWNLOAD_STOPPED")
-             }
-             MediaHelperStatus.DOWNLOAD_IN_PROGRESS -> {
-                 showPlayIcon(false)
-                 showProgress()
-                 Log.i(TAG, "onMediaStateUpdated: DOWNLOAD_IN_PROGRESS")
-             }
-             MediaHelperStatus.DOWNLOAD_SUCCESS -> {
-                 showPlayIcon(false)
-                 showProgress(false)
-                 Log.i(TAG, "onMediaStateUpdated: DOWNLOAD_SUCCESS")
-             }
-
-             MediaHelperStatus.PLAYER_STOPPED -> {
-                 // stop player and sync view with this status
-                 showPlayIcon()
-                 showProgress(false)
-                 Log.i(TAG, "onMediaStateUpdated: PLAYER_STOPPED")
-             }
-             MediaHelperStatus.PLAYER_PREPARING -> {
-                 showPlayIcon(false)
-                 showProgress(false)
-                 Log.i(TAG, "onMediaStateUpdated: PLAYER_PREPARING")
-             }
-             MediaHelperStatus.PLAYER_PREPARED -> {
-                 showPlayIcon(false)
-                 showProgress(false)
-                 Log.i(TAG, "onMediaStateUpdated: PLAYER_PREPARED")
-             }
-             MediaHelperStatus.PLAYER_PLAYING -> {
-                 showPlayIcon(false)
-                 showProgress(false)
-                 Log.i(TAG, "onMediaStateUpdated: PLAYER_PLAYING")
-             }
-             MediaHelperStatus.PLAYER_PROGRESS -> {
-                 setSeekbarProgress(mediaPlayerInfo?.currProgress ?: 0)
-                 showProgress(false)
-             }
-             MediaHelperStatus.PLAYER_ERROR -> {
-                 showPlayIcon()
-                 showProgress(false)
-                 Log.i(TAG, "onMediaStateUpdated: PLAYER_ERROR")
-             }
-             MediaHelperStatus.PLAYER_COMPLETED -> {
-                 showPlayIcon()
-                 showProgress(false)
-                 resetSeekbar()
-             }
-             else -> {
-                 // any thing
-                 showPlayIcon()
-                 showProgress(false)
-                 resetSeekbar()
-             }
-         }
-     }*/
-
-    private fun showPlayIcon(showPlayIcon: Boolean = true) {
+    private fun syncMediaPlayerStateWithUI(showPlayIcon: Boolean = true) {
         if (showPlayIcon) {
-            imageButtonPlayPause?.setImageResource(R.drawable.ic_baseline_play_arrow_24)
+            ibPlayPause?.setImageResource(R.drawable.ic_baseline_play_arrow_24)
         } else {
-            imageButtonPlayPause?.setImageResource(R.drawable.ic_baseline_pause_24)
+            ibPlayPause?.setImageResource(R.drawable.ic_baseline_pause_24)
         }
     }
 
-    private fun showProgress(showProgress: Boolean = true) {
-        if (showProgress) {
-            progressBarDownload?.visibility = View.VISIBLE
+    private fun showMediaPlayer(showMediaPlayer: Boolean = true) {
+        if (showMediaPlayer) {
+            ibPlayPause?.visibility = View.VISIBLE
         } else {
-            progressBarDownload?.visibility = View.GONE
+            ibPlayPause?.visibility = View.INVISIBLE
+        }
+    }
+
+    private fun showDownloadProgress(showDownloadProgress: Boolean = true) {
+        if (showDownloadProgress) {
+            pbDownload?.visibility = View.VISIBLE
+        } else {
+            pbDownload?.visibility = View.GONE
+        }
+    }
+
+    private fun showUploadProgress(showUploadProgress: Boolean = true) {
+        if (showUploadProgress) {
+            pbUpload?.visibility = View.VISIBLE
+        } else {
+            pbUpload?.visibility = View.GONE
+        }
+    }
+
+    private fun showDownload(showRetry: Boolean) {
+        if (showRetry) {
+            ibDownload?.visibility = View.VISIBLE
+        } else {
+            ibDownload?.visibility = View.GONE
         }
     }
 
     private fun resetSeekbar() {
-        seekbarVoice?.progress = 0
+        sbVoice?.progress = 0
     }
 
-    private fun setSeekbarProgress(progress: Int) {
-        seekbarVoice?.progress = progress
+    private fun setPlayerProgress(progress: Int) {
+        sbVoice?.progress = progress
     }
 
     private fun setPlayerInfo(downloadInfo: DownloadInfo?) {
-        textviewTimer?.text = MediaMetadataRetrieverHelper.getFileDuration(downloadInfo?.filePath)
+        tvTimer?.text = MediaMetadataRetrieverHelper.getFileDuration(downloadInfo?.filePath)
     }
 
     private fun setPlayerInfo(mediaPlayerInfo: MediaPlayerInfo?) {
-        textviewTimer?.text =
+        tvTimer?.text =
             MediaMetadataRetrieverHelper.getFileDuration(mediaPlayerInfo?.currLocalFileAddress)
     }
 
-    /*private fun bindMediaHelper() {
-        val targetMessageModel = ChatKitV4MediaHelperV2.getMessageModel()
-        if (messageModel?.id == targetMessageModel?.id) {
-            // sync listeners
-            // ChatKitV4MediaHelperV2.setMediaHelperCallback(this)
-            // sync UI
-            when {
-                ChatKitV4MediaHelperV2.getIsPlaying() -> {
-                    onMediaStateUpdated(MediaHelperStatus.PLAYER_PLAYING)
-                }
-                ChatKitV4MediaHelperV2.getIsDownloading() -> {
-                    onMediaStateUpdated(MediaHelperStatus.DOWNLOAD_PREPARING)
-                }
-                else -> {
-                    onMediaStateUpdated(MediaHelperStatus.IDLE)
-                }
-            }
-        } else {
-            // reset/IDLE UI
-            onMediaStateUpdated(MediaHelperStatus.IDLE)
-        }
-    }*/
 
 }

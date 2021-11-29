@@ -20,10 +20,7 @@ class ViewHolderAlphaVoiceMessage(
     private var chatKitV4ListAdapterCallback: ChatKitV4ListAdapterCallback? = null
 ) : RecyclerView.ViewHolder(view), MediaHelperCallback {
 
-    private val TAG = "ViewHolderAlphaVoiceMsg"
-
     private var messageModel: MessageModel? = null
-
     private var tvTitle = view.findViewById(R.id.tv_title) as AppCompatTextView?
     private var tvSubTitle = view.findViewById(R.id.tv_sub_title) as AppCompatTextView?
     private var tvTimer = view.findViewById(R.id.tv_timer) as AppCompatTextView?
