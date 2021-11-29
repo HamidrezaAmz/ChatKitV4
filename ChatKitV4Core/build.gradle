@@ -10,8 +10,8 @@ android {
     defaultConfig {
         minSdk 23
         targetSdk 30
-        versionCode 23
-        versionName "1.0.23"
+        versionCode 24
+        versionName "1.0.24"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -106,7 +106,7 @@ afterEvaluate {
 
                 groupId = 'com.github.hamidrezaamz'
                 artifactId = 'ChatKitV4'
-                version = '1.0.23'
+                version = '1.0.24'
             }
         }
     }
