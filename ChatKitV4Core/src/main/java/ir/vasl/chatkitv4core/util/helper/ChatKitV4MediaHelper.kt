@@ -41,7 +41,7 @@ class ChatKitV4MediaHelper(
 
     fun playVoice(messageModel: MessageModel) {
         // we have a new guest
-        this.messageModelQueue[messageModel.id] = messageModel
+        // this.messageModelQueue[messageModel.id] = messageModel
         chatKitV4MediaPlayer.playSound(messageModel)
     }
 

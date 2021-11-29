@@ -44,8 +44,10 @@ class ChatKitV4MediaPlayer(
     }
 
     fun terminatePlayer() {
-        stopSound()
+        Log.i(TAG, "ChatKitV4MediaPlayer | terminatePlayer: ")
+
         stopMediaProgressTracker()
+        stopSound()
     }
 
     fun getIsPlaying(): Boolean {
@@ -54,18 +56,35 @@ class ChatKitV4MediaPlayer(
 
     @Synchronized
     fun playSound(messageModel: MessageModel) {
-        this.currMessageModel = messageModel
+        Log.i(TAG, "ChatKitV4MediaPlayer | playSound: ")
+
+        // check if we have playing in progress, reset it before new player start
+        currMessageModel?.let {
+            if (messageModel != currMessageModel) {
+                it.progressPlayer = PublicValue.CHATKIR_V4_MEDIA_PLAYER_START_VALUE // reset player
+                mediaHelperCallback?.onMediaStatePlayerUpdated(
+                    it,
+                    messageConditionStatus = MessageConditionStatus.PLAYER_FINISHED
+                )
+            }
+            stopSound()
+        }
+
+        // impl player reference
         if (currMediaPlayer == null) {
             currMediaPlayer = MediaPlayer()
         } else {
             stopSound()
         }
 
+        // update message model
+        this.currMessageModel = messageModel
+
         val localFile = currMessageModel?.localFileAddress
         if (localFile.isNullOrEmpty() || FileHelper.checkFileExists(localFile).not()) {
-            // need to download file!
+            // need to download file
             mediaHelperCallback?.onMediaStatePlayerUpdated(
-                messageModel = currMessageModel!!,
+                messageModel = currMessageModel ?: return,
                 messageConditionStatus = MessageConditionStatus.DOWNLOAD_NEEDED
             )
             return
@@ -95,18 +114,40 @@ class ChatKitV4MediaPlayer(
 
     @Synchronized
     fun stopSound() {
-        if (currMediaPlayer != null)
-            currMediaPlayer?.reset()
+        Log.i(TAG, "ChatKitV4MediaPlayer | stopSound: ")
+
+        // update ui
+        currMessageModel?.let {
+            it.progressPlayer = PublicValue.CHATKIR_V4_MEDIA_PLAYER_START_VALUE // reset player
+            mediaHelperCallback?.onMediaStatePlayerUpdated(
+                it,
+                messageConditionStatus = MessageConditionStatus.PLAYER_FINISHED
+            )
+        }
+
+        // stop player
+        currMediaPlayer?.let {
+            currMediaPlayer?.stop()
+            currMediaPlayer?.release()
+            currMediaPlayer = null
+        }
+
+        // clear message model
+        currMessageModel = null
     }
 
     @Synchronized
     fun pauseSound() {
+        Log.i(TAG, "ChatKitV4MediaPlayer | pauseSound: ")
+
         if (currMediaPlayer != null)
             currMediaPlayer?.pause()
     }
 
     @Synchronized
     fun restartSound() {
+        Log.i(TAG, "ChatKitV4MediaPlayer | restartSound: ")
+
         if (currMediaPlayer != null) {
             currMediaPlayer?.start()
         }
@@ -114,16 +155,22 @@ class ChatKitV4MediaPlayer(
 
     @Synchronized
     fun getMediaPlayer(): MediaPlayer? {
+        Log.i(TAG, "ChatKitV4MediaPlayer | getMediaPlayer: ")
+
         if (currMediaPlayer == null)
             currMediaPlayer = MediaPlayer()
         return currMediaPlayer
     }
 
     fun runMediaProgressTracker() {
+        Log.i(TAG, "ChatKitV4MediaPlayer | runMediaProgressTracker: ")
+
         updateSeekBarHandler.postDelayed(updateSeekBar, 0);
     }
 
     fun stopMediaProgressTracker() {
+        Log.i(TAG, "ChatKitV4MediaPlayer | stopMediaProgressTracker: ")
+
         // add delay on remove | this will fix lag issue!!! :|
         Handler(Looper.getMainLooper()).postDelayed({
             updateSeekBarHandler.removeCallbacks(updateSeekBar);
@@ -133,13 +180,13 @@ class ChatKitV4MediaPlayer(
     override fun onCompletion(mediaPlayer: MediaPlayer) {
         Log.i(TAG, "ChatKitV4MediaPlayer | onCompletion: ")
         currMessageModel?.let {
-            it.progressPlayer = 100 // max value for progress player
+            it.progressPlayer = PublicValue.CHATKIR_V4_MEDIA_PLAYER_START_VALUE // reset player
             mediaHelperCallback?.onMediaStatePlayerUpdated(
                 it,
                 messageConditionStatus = MessageConditionStatus.PLAYER_FINISHED
             )
         }
-        terminatePlayer()
+        stopMediaProgressTracker()
     }
 
     override fun onError(mediaPlayer: MediaPlayer, i: Int, i1: Int): Boolean {
@@ -150,7 +197,7 @@ class ChatKitV4MediaPlayer(
                 messageConditionStatus = MessageConditionStatus.PLAYER_FAILED
             )
         }
-        terminatePlayer()
+        stopMediaProgressTracker()
         return false
     }
 
