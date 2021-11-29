@@ -133,6 +133,7 @@ class ChatKitV4MediaPlayer(
     override fun onCompletion(mediaPlayer: MediaPlayer) {
         Log.i(TAG, "ChatKitV4MediaPlayer | onCompletion: ")
         currMessageModel?.let {
+            it.progressPlayer = 100 // max value for progress player
             mediaHelperCallback?.onMediaStatePlayerUpdated(
                 it,
                 messageConditionStatus = MessageConditionStatus.PLAYER_FINISHED
