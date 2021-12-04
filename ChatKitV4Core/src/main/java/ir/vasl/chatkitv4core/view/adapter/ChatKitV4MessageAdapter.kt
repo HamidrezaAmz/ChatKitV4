@@ -5,7 +5,6 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import ir.vasl.chatkitv4core.R
 import ir.vasl.chatkitv4core.model.MessageModel
 import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageContentType
 import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageOwnerType
@@ -111,7 +110,7 @@ class ChatKitV4MessageAdapter(
             else -> {
                 ViewHolderNotSupported(
                     LayoutInflater.from(parent.context)
-                        .inflate(R.layout.defaul_not_supported_layout, parent, false)
+                        .inflate(chatStyle.notSupportedLayoutId, parent, false)
                 )
             }
         }
@@ -133,6 +132,9 @@ class ChatKitV4MessageAdapter(
                 holder.bind(messageModel)
             }
             is ViewHolderSystemMessage -> {
+                holder.bind(messageModel)
+            }
+            is ViewHolderNotSupported -> {
                 holder.bind(messageModel)
             }
             else -> {

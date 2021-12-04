@@ -7,6 +7,7 @@
         <item name="beta_text_layout_id">@layout/defaul_beta_text_layout</item>
         <item name="beta_voice_layout_id">@layout/defaul_beta_voice_layout</item>
         <item name="system_text_layout_id">@layout/defaul_system_text_layout</item>
+        <item name="not_supported_layout_id">@layout/defaul_not_supported_layout</item>
         <item name="chatkitv4_input_background">@color/default_input_background</item>
         <item name="chatkitv4_input_send_button_icon">@drawable/ic_default_baseline_send_24</item>
         <item name="chatkitv4_input_send_button_background">@drawable/shape_round_recorder</item>

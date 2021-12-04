@@ -108,6 +108,16 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
                     )
                 )
             }
+
+            R.id.action_add_undefined_message -> {
+                binding.chatKitV4.addNewMessageIntoChatKitV4(
+                    SampleChatDataGenerator.getMessageNotSupported(
+                        chatId = PublicValue.CHAT_ID,
+                        messageOwnerType = MessageOwnerType.UNDEFINED,
+                        messageContentType = MessageContentType.UNDEFINED
+                    )
+                )
+            }
         }
         return super.onOptionsItemSelected(item)
     }

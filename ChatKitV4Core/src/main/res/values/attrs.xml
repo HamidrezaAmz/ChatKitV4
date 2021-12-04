@@ -8,6 +8,7 @@
         <attr name="beta_text_layout_id" format="reference" />
         <attr name="beta_voice_layout_id" format="reference" />
         <attr name="system_text_layout_id" format="reference" />
+        <attr name="not_supported_layout_id" format="reference" />
 
         <attr name="chatkitv4_input_background" format="reference" />
         <attr name="chatkitv4_input_send_button_icon" format="reference" />

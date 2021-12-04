@@ -55,6 +55,22 @@ class SampleChatDataGenerator {
             )
         }
 
+        fun getMessageNotSupported(
+            chatId: String,
+            messageOwnerType: MessageOwnerType = MessageOwnerType.ALPHA,
+            messageContentType: MessageContentType = MessageContentType.TEXT,
+        ): MessageModel {
+            return MessageModel(
+                id = getStrId(),
+                createAt = System.currentTimeMillis(),
+                subTitle = "پیام دریافتی پشتیبانی نمی شود",
+                date = getDate(),
+                messageOwnerType = messageOwnerType.name,
+                messageContentType = messageContentType.name,
+                chatId = chatId
+            )
+        }
+
         private fun getTitle(): String {
             return SampleRandomTextGenerator.getRandomShortTextFa()
         }

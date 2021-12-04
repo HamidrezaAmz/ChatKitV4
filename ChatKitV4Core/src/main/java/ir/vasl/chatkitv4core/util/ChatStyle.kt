@@ -20,7 +20,7 @@ class ChatStyle(context: Context, attrs: AttributeSet?) : ChatBaseStyle(context,
     var systemTextLayoutId: Int = -1
 
     // chatkit scope
-
+    var notSupportedLayoutId: Int = -1
 
     companion object Parser {
 
@@ -55,7 +55,10 @@ class ChatStyle(context: Context, attrs: AttributeSet?) : ChatBaseStyle(context,
             )
 
             // chatkit scope
-
+            chatStyle.notSupportedLayoutId = typedArray.getResourceId(
+                R.styleable.ChatKitV4_not_supported_layout_id,
+                R.layout.defaul_not_supported_layout
+            )
 
             typedArray.recycle()
             return chatStyle

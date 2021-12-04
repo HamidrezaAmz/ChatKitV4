@@ -18,7 +18,7 @@
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_alpha_voice_layout.xml" value="0.29791666666666666" />
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_beta_voice_layout.xml" value="0.2833333333333333" />
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_not_supported_bubble.xml" value="0.2833333333333333" />
-        <entry key="ChatKitV4Core/src/main/res/layout/defaul_not_supported_layout.xml" value="0.29791666666666666" />
+        <entry key="ChatKitV4Core/src/main/res/layout/defaul_not_supported_layout.xml" value="0.19814814814814816" />
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_other_bubble.xml" value="0.2833333333333333" />
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_other_text_layout.xml" value="0.29791666666666666" />
         <entry key="ChatKitV4Core/src/main/res/layout/defaul_other_voice_bubble.xml" value="0.2212962962962963" />
@@ -60,6 +60,7 @@
         <entry key="app/src/main/res/drawable/shape_self_bubble_selected.xml" value="0.28888888888888886" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18888888888888888" />
         <entry key="app/src/main/res/layout/alpha_voice_layout.xml" value="0.2561903676772917" />
+        <entry key="app/src/main/res/layout/not_supported_layout.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/layout/other_bubble.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/layout/other_text_layout.xml" value="0.29791666666666666" />
         <entry key="app/src/main/res/layout/other_voice_layout.xml" value="0.2833333333333333" />

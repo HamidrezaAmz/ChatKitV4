@@ -41,18 +41,6 @@
             app:layout_constraintWidth_min="@dimen/min_width_message"
             tools:text="This view type is not supported! Please check your input and sync with library documents" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/iv_download"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_below="@id/tv_message"
-            android:padding="10dp"
-            android:src="@android:drawable/stat_sys_download"
-            android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_message" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </FrameLayout>
