@@ -98,6 +98,10 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
             }
             binding.etInputMessage.text?.clear()
         }
+        binding.ibAttachment.setOnClickListener {
+            if (::chatKitV4InputCallback.isInitialized)
+                chatKitV4InputCallback.onAttachmentClicked()
+        }
         binding.etInputMessage.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
             }
@@ -113,10 +117,6 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
                 }
             }
         })
-        binding.ibAttachment.setOnClickListener {
-            if (::chatKitV4InputCallback.isInitialized)
-                chatKitV4InputCallback.onAttachmentClicked()
-        }
     }
 
     private fun showUserInputHint(showUserInputHint: Boolean = true) {

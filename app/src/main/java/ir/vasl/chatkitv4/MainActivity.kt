@@ -263,7 +263,7 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
     }
 
     override fun onAttachmentClicked() {
-        Log.i(TAG, "onAttachmentClicked: ")
+        Log.i(TAG, "onAttachmentClicked: ************************** ")
         storageHelper.openFilePicker(PublicValue.PICKFILE_RESULT_CODE)
     }
 

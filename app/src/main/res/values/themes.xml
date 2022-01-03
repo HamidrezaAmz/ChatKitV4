@@ -19,9 +19,12 @@
         <item name="alpha_text_layout_id">@layout/alpha_text_layout</item>
         <item name="alpha_voice_layout_id">@layout/alpha_voice_layout</item>
         <item name="alpha_document_layout_id">@layout/alpha_document_layout</item>
+
         <item name="beta_text_layout_id">@layout/beta_text_layout</item>
         <item name="beta_voice_layout_id">@layout/beta_voice_layout</item>
+
         <item name="not_supported_layout_id">@layout/not_supported_layout</item>
+
         <item name="chatkitv4_input_background">@color/lightWhite</item>
         <item name="chatkitv4_input_send_button_icon">@drawable/ic_baseline_send_24</item>
         <item name="chatkitv4_input_send_button_background">@drawable/shape_circle</item>
