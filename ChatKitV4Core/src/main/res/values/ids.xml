@@ -11,4 +11,7 @@
     <item name="sb_voice" type="id" />
     <item name="pb_upload" type="id" />
     <item name="ib_retry" type="id" />
+    <item name="ib_attachment" type="id" />
+    <item name="progressBar" type="id" />
+    <item name="iv_document_logo" type="id" />
 </resources>

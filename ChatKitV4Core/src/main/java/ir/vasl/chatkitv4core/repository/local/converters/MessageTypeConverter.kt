@@ -1,4 +1,4 @@
-package ir.vasl.chatkitv4core.repository.local.converter
+package ir.vasl.chatkitv4core.repository.local.converters
 
 import androidx.room.TypeConverter
 import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageOwnerType

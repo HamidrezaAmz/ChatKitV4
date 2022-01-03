@@ -3,18 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/action_add_server_text_message"
-        android:icon="@drawable/ic_action_server"
-        android:title="Add server text msg"
-        app:showAsAction="never" />
-
-    <item
-        android:id="@+id/action_add_server_voice_message"
-        android:icon="@drawable/ic_action_server"
-        android:title="Add server voice msg"
-        app:showAsAction="never" />
-
-    <item
         android:id="@+id/action_add_client_text_message"
         android:icon="@drawable/ic_action_client"
         android:title="Add client text msg"
@@ -24,6 +12,24 @@
         android:id="@+id/action_add_client_voice_message"
         android:icon="@drawable/ic_action_client"
         android:title="Add client voice msg"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_add_client_document_message"
+        android:icon="@drawable/ic_action_client"
+        android:title="Add client document msg"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_add_server_text_message"
+        android:icon="@drawable/ic_action_server"
+        android:title="Add server text msg"
+        app:showAsAction="never" />
+
+    <item
+        android:id="@+id/action_add_server_voice_message"
+        android:icon="@drawable/ic_action_server"
+        android:title="Add server voice msg"
         app:showAsAction="never" />
 
     <item

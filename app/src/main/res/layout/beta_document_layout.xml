@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/margin_20dp"
+    android:layout_marginEnd="@dimen/margin_20dp"
+    android:layoutDirection="ltr"
+    tools:ignore="MissingDefaultResource">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout_message_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_beta"
+            android:minWidth="200dp"
+            android:padding="@dimen/padding_12dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@id/iv_document_logo"
+                android:layout_width="50dp"
+                android:layout_height="70dp"
+                android:layout_margin="@dimen/margin_8dp"
+                android:background="@color/red"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/padding_8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/iv_document_logo"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@id/tv_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/app_font"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:textColor="@color/white"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_max="200dp"
+                    app:layout_constraintWidth_min="50dp"
+                    tools:text="John Doe" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@id/tv_sub_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/app_font"
+                    android:gravity="end"
+                    android:textColor="@color/white"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/tv_title"
+                    app:layout_constraintWidth_max="200dp"
+                    app:layout_constraintWidth_min="50dp"
+                    tools:text="200 KB" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <ProgressBar
+                android:id="@id/progressBar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="@dimen/margin_8dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@id/iv_document_logo"
+                app:layout_constraintEnd_toEndOf="@id/iv_document_logo"
+                app:layout_constraintStart_toStartOf="@id/iv_document_logo"
+                app:layout_constraintTop_toTopOf="@id/iv_document_logo" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@id/tv_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/app_font"
+            android:gravity="end"
+            android:padding="@dimen/padding_4dp"
+            android:text="12:00"
+            android:textColor="@color/light_gray"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constraintLayout_message_holder" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

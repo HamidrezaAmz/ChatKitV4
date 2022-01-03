@@ -113,24 +113,27 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
                 }
             }
         })
+        binding.ibAttachment.setOnClickListener {
+            if (::chatKitV4InputCallback.isInitialized)
+                chatKitV4InputCallback.onAttachmentClicked()
+        }
     }
 
-    private fun setVoiceRecorderEnable(enableVoiceRecorder: Boolean = true) {
+    private fun showUserInputHint(showUserInputHint: Boolean = true) {
+        if (showUserInputHint) {
+            binding.etInputMessage.hint = context.getString(R.string.title_chatkitv4_input_edittext_hint)
+        } else {
+            binding.etInputMessage.hint = null
+        }
+    }
+
+    fun setVoiceRecorderEnable(enableVoiceRecorder: Boolean = true) {
         if (enableVoiceRecorder) {
             binding.recordButton.setImageResource(R.drawable.recv_ic_mic_white)
             binding.recordButton.isListenForRecord = true
         } else {
             binding.recordButton.setImageResource(R.drawable.ic_baseline_send_24)
             binding.recordButton.isListenForRecord = false
-        }
-    }
-
-    private fun showUserInputHint(showUserInputHint: Boolean = true) {
-        if (showUserInputHint) {
-            binding.etInputMessage.hint =
-                context.getString(R.string.title_chatkitv4_input_edittext_hint)
-        } else {
-            binding.etInputMessage.hint = null
         }
     }
 
@@ -144,6 +147,13 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
 
     fun getRecordView(): RecordView {
         return binding.recordView
+    }
+
+    fun showAttachmentIcon(visible: Boolean = true) {
+        if (visible)
+            binding.ibAttachment.visibility = VISIBLE
+        else
+            binding.ibAttachment.visibility = GONE
     }
 
 }

@@ -55,6 +55,25 @@ class SampleChatDataGenerator {
             )
         }
 
+        fun getDocumentMessage(
+            chatId: String,
+            messageOwnerType: MessageOwnerType = MessageOwnerType.ALPHA,
+            messageContentType: MessageContentType = MessageContentType.DOCUMENT
+        ): MessageModel {
+            return MessageModel(
+                id = getStrId(),
+                createAt = System.currentTimeMillis(),
+                title = getTitle(),
+                date = getDate(),
+                fileName = "sample file name",
+                fileSize = "245 K.B",
+                messageOwnerType = messageOwnerType.name,
+                messageContentType = messageContentType.name,
+                remoteFileUrl = PublicValue.SAMPLE_URL_MP3,
+                chatId = chatId
+            )
+        }
+
         fun getMessageNotSupported(
             chatId: String,
             messageOwnerType: MessageOwnerType = MessageOwnerType.ALPHA,

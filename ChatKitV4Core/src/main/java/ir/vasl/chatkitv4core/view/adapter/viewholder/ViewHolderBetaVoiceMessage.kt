@@ -80,8 +80,7 @@ class ViewHolderBetaVoiceMessage(
                 // if the player is playing sth, so stop it but if the player is on any condition,
                 // try to play and launch player ...
                 MessageConditionStatus.PLAYER_STARTED.name, MessageConditionStatus.PLAYER_IN_PROGRESS.name -> {
-                    messageModel.messageConditionStatus =
-                        MessageConditionStatus.PLAYER_STOPPED.name
+                    messageModel.messageConditionStatus = MessageConditionStatus.PLAYER_STOPPED.name
                 }
                 else -> {
                     messageModel?.messageConditionStatus =
@@ -309,6 +308,5 @@ class ViewHolderBetaVoiceMessage(
         tvTimer?.text =
             MediaMetadataRetrieverHelper.getFileDuration(mediaPlayerInfo?.currLocalFileAddress)
     }
-
 
 }

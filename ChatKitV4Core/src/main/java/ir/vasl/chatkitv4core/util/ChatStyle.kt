@@ -9,12 +9,12 @@ class ChatStyle(context: Context, attrs: AttributeSet?) : ChatBaseStyle(context,
     // alpha scope
     var alphaTextLayoutId: Int = -1
     var alphaVoiceLayoutId: Int = -1
-    var alphaVideoLayoutId: Int = -1
-    var alphaImageLayoutId: Int = -1
+    var alphaDocumentLayoutId: Int = -1
 
     // beta scope
     var betaTextLayoutId: Int = -1
     var betaVoiceLayoutId: Int = -1
+    var betaDocumentLayoutId: Int = -1
 
     // system scope
     var systemTextLayoutId: Int = -1
@@ -37,6 +37,10 @@ class ChatStyle(context: Context, attrs: AttributeSet?) : ChatBaseStyle(context,
                 R.styleable.ChatKitV4_alpha_voice_layout_id,
                 R.layout.defaul_alpha_voice_layout
             )
+            chatStyle.alphaDocumentLayoutId = typedArray.getResourceId(
+                R.styleable.ChatKitV4_alpha_document_layout_id,
+                R.layout.defaul_beta_document_layout
+            )
 
             // beta scope
             chatStyle.betaTextLayoutId = typedArray.getResourceId(
@@ -45,6 +49,10 @@ class ChatStyle(context: Context, attrs: AttributeSet?) : ChatBaseStyle(context,
             )
             chatStyle.betaVoiceLayoutId = typedArray.getResourceId(
                 R.styleable.ChatKitV4_beta_voice_layout_id,
+                R.layout.defaul_beta_voice_layout
+            )
+            chatStyle.betaDocumentLayoutId = typedArray.getResourceId(
+                R.styleable.ChatKitV4_beta_document_layout_id,
                 R.layout.defaul_beta_voice_layout
             )
 

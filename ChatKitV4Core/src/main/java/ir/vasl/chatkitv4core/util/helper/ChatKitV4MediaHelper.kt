@@ -24,7 +24,7 @@ class ChatKitV4MediaHelper(
         // we have a new guest
         this.messageModelQueue[messageModel.id] = messageModel
 
-        if (messageModel.remoteFileUrl.isEmpty().not())
+        if (messageModel.remoteFileUrl.isNullOrEmpty().not())
             chatKitV4DownloadManager.submitNewDownloadRequest(messageModel)
         else {
             Log.i(TAG, "downloadFile: remoteFileUrl is empty!")
@@ -41,7 +41,6 @@ class ChatKitV4MediaHelper(
 
     fun playVoice(messageModel: MessageModel) {
         // we have a new guest
-        // this.messageModelQueue[messageModel.id] = messageModel
         chatKitV4MediaPlayer.playSound(messageModel)
     }
 

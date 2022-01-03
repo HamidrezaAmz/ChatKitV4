@@ -30,6 +30,8 @@
             android:maxLines="4"
             android:minHeight="48dp"
             android:padding="@dimen/padding_16dp"
+            android:paddingStart="@dimen/padding_50dp"
+            android:paddingEnd="@dimen/padding_8dp"
             android:textColor="@color/black"
             android:textColorHint="@color/light_gray"
             android:textSize="12sp"
@@ -37,6 +39,20 @@
             app:layout_constraintEnd_toStartOf="@+id/record_button"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="TextContrastCheck" />
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/ib_attachment"
+            android:layout_width="@dimen/height_50dp"
+            android:layout_height="@dimen/height_50dp"
+            android:background="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="@dimen/padding_16dp"
+            android:scaleType="fitCenter"
+            android:src="?attr/chatkitv4_input_attachment_icon"
+            app:layout_constraintBottom_toBottomOf="@id/et_input_message"
+            app:layout_constraintStart_toStartOf="@id/et_input_message"
+            app:layout_constraintTop_toTopOf="@id/et_input_message" />
 
         <com.devlomi.record_view.RecordView
             android:id="@+id/record_view"

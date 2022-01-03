@@ -103,6 +103,26 @@ class ChatKitV4List @kotlin.jvm.JvmOverloads constructor(
         }
     }
 
+    override fun onUploadFileClicked(messageModel: MessageModel?) {
+        if (::chatKitV4ListCallback.isInitialized)
+            chatKitV4ListCallback.onUploadFileClicked(messageModel)
+    }
+
+    override fun onPreviewFileClicked(messageModel: MessageModel?) {
+        if (::chatKitV4ListCallback.isInitialized)
+            chatKitV4ListCallback.onPreviewFileClicked(messageModel)
+    }
+
+    override fun onMessageModelChanged(messageModel: MessageModel?) {
+        if (::chatKitV4ListCallback.isInitialized)
+            chatKitV4ListCallback.onMessageModelChange(messageModel)
+
+        messageModel?.let {
+            // update item in database
+            chatKitV4ViewModel.updateMessageModel(it)
+        }
+    }
+
     override fun onMediaStateUpdated(
         messageModel: MessageModel,
         messageConditionStatus: MessageConditionStatus,

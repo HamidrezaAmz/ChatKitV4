@@ -5,8 +5,10 @@
     <declare-styleable name="ChatKitV4">
         <attr name="alpha_text_layout_id" format="reference" />
         <attr name="alpha_voice_layout_id" format="reference" />
+        <attr name="alpha_document_layout_id" format="reference" />
         <attr name="beta_text_layout_id" format="reference" />
         <attr name="beta_voice_layout_id" format="reference" />
+        <attr name="beta_document_layout_id" format="reference" />
         <attr name="system_text_layout_id" format="reference" />
         <attr name="not_supported_layout_id" format="reference" />
 

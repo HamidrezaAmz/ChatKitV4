@@ -1,14 +1,18 @@
 package ir.vasl.chatkitv4
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.documentfile.provider.DocumentFile
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.lifecycleScope
+import com.anggrayudi.storage.SimpleStorageHelper
+import com.anggrayudi.storage.file.getFormattedSize
 import ir.vasl.chatkitv4.databinding.ActivityMainBinding
 import ir.vasl.chatkitv4.helpers.ContextWrapper
 import ir.vasl.chatkitv4.helpers.UploadFileSimulator
@@ -30,7 +34,9 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
 
     private val TAG = "MainActivity"
 
-    lateinit var binding: ActivityMainBinding
+    private lateinit var storageHelper: SimpleStorageHelper
+
+    private lateinit var binding: ActivityMainBinding
 
     private lateinit var chatKitV4ViewModel: ChatKitV4ViewModel
 
@@ -38,6 +44,7 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setupSimpleStorage(savedInstanceState)
         initializeChatKitV4()
     }
 
@@ -55,14 +62,38 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.action_delete_database -> {
 
-                binding.chatKitV4.clearAll()
-                Toast.makeText(
-                    this@MainActivity,
-                    "Database deleted!",
-                    Toast.LENGTH_SHORT
-                ).show()
+            R.id.action_add_client_text_message -> {
+
+                binding.chatKitV4.addNewMessageIntoChatKitV4(
+                    SampleChatDataGenerator.getMessage(
+                        chatId = PublicValue.CHAT_ID,
+                        messageOwnerType = MessageOwnerType.ALPHA,
+                        messageContentType = MessageContentType.TEXT
+                    )
+                )
+            }
+
+            R.id.action_add_client_voice_message -> {
+
+                binding.chatKitV4.addNewMessageIntoChatKitV4(
+                    SampleChatDataGenerator.getMessage(
+                        chatId = PublicValue.CHAT_ID,
+                        messageOwnerType = MessageOwnerType.ALPHA,
+                        messageContentType = MessageContentType.VOICE
+                    )
+                )
+            }
+
+            R.id.action_add_client_document_message -> {
+
+                binding.chatKitV4.addNewMessageIntoChatKitV4(
+                    SampleChatDataGenerator.getDocumentMessage(
+                        chatId = PublicValue.CHAT_ID,
+                        messageOwnerType = MessageOwnerType.ALPHA,
+                        messageContentType = MessageContentType.DOCUMENT
+                    )
+                )
             }
 
             R.id.action_add_server_text_message -> {
@@ -87,28 +118,6 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
                 )
             }
 
-            R.id.action_add_client_text_message -> {
-
-                binding.chatKitV4.addNewMessageIntoChatKitV4(
-                    SampleChatDataGenerator.getMessage(
-                        chatId = PublicValue.CHAT_ID,
-                        messageOwnerType = MessageOwnerType.ALPHA,
-                        messageContentType = MessageContentType.TEXT
-                    )
-                )
-            }
-
-            R.id.action_add_client_voice_message -> {
-
-                binding.chatKitV4.addNewMessageIntoChatKitV4(
-                    SampleChatDataGenerator.getMessage(
-                        chatId = PublicValue.CHAT_ID,
-                        messageOwnerType = MessageOwnerType.ALPHA,
-                        messageContentType = MessageContentType.VOICE
-                    )
-                )
-            }
-
             R.id.action_add_undefined_message -> {
                 binding.chatKitV4.addNewMessageIntoChatKitV4(
                     SampleChatDataGenerator.getMessageNotSupported(
@@ -118,8 +127,32 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
                     )
                 )
             }
+
+            R.id.action_delete_database -> {
+
+                binding.chatKitV4.clearAll()
+                Toast.makeText(
+                    this@MainActivity,
+                    "Database deleted!",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        // If the selection didn't work
+        if (resultCode != RESULT_OK) {
+            // Exit without doing anything else
+            return
+        } else {
+            if (requestCode == PublicValue.PICKFILE_RESULT_CODE) {
+
+            }
+        }
     }
 
     private fun initializeChatKitV4() {
@@ -138,6 +171,35 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
             binding.chatKitV4.initializeChatKitV4ViewModel(chatKitV4ViewModel)
         }
 
+        // binding.chatKitV4.setVoiceRecorderEnable(false)
+
+    }
+
+    private fun setupSimpleStorage(savedInstanceState: Bundle?) {
+        storageHelper = SimpleStorageHelper(this, savedInstanceState)
+        storageHelper.onFileSelected = { requestCode, files ->
+            submitNewDocument(files)
+        }
+    }
+
+    private fun submitNewDocument(files: List<DocumentFile>) {
+        val file = files.first()
+        Log.i(TAG, "onSubmitNewDocumentMessage()")
+        val messageModel = MessageModel(
+            id = SampleRandomIdGenerator.getRandomStrId(),
+            createAt = System.currentTimeMillis(),
+            title = file.name,
+            date = "12:00",
+            messageOwnerType = MessageOwnerType.ALPHA.name,
+            messageContentType = MessageContentType.DOCUMENT.name,
+            chatId = PublicValue.CHAT_ID,
+            localFileAddress = file.uri.path,
+            messageConditionStatus = MessageConditionStatus.UPLOAD_IN_PROGRESS.name,
+            fileName = file.name,
+            fileSize = file.getFormattedSize(this@MainActivity)
+        )
+
+        binding.chatKitV4.addNewMessageIntoChatKitV4(messageModel)
     }
 
     override fun onReachedToEnd() {
@@ -161,7 +223,7 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
             date = "12:00",
             messageOwnerType = MessageOwnerType.ALPHA.name,
             messageContentType = MessageContentType.TEXT.name,
-            chatId = PublicValue.CHAT_ID
+            chatId = PublicValue.CHAT_ID,
         )
 
         binding.chatKitV4.addNewMessageIntoChatKitV4(messageModel)
@@ -200,6 +262,24 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
     override fun onRecorderNeedPermission() {
         Log.i(TAG, "onRecorderNeedPermission: ")
         Toast.makeText(this, "Need Permission", Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onAttachmentClicked() {
+        Log.i(TAG, "onAttachmentClicked: ")
+        storageHelper.openFilePicker(PublicValue.PICKFILE_RESULT_CODE)
+    }
+
+    override fun onDownloadFileClicked(messageModel: MessageModel?) {
+        super.onDownloadFileClicked(messageModel)
+    }
+
+    override fun onUploadFileClicked(messageModel: MessageModel?) {
+        Toast.makeText(this@MainActivity, "onUploadFileClicked", Toast.LENGTH_SHORT).show()
+        messageModel?.let { UploadFileSimulator.startUploadFile(binding.chatKitV4, it) }
+    }
+
+    override fun onPreviewFileClicked(messageModel: MessageModel?) {
+        Toast.makeText(this@MainActivity, "onPreviewFileClicked", Toast.LENGTH_SHORT).show()
     }
 
 }

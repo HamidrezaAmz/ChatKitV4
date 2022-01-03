@@ -53,17 +53,10 @@ class ChatKitV4MessageAdapter(
                     chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
-            MessageOwnerType.ALPHA_VIDEO.ordinal -> {
-                ViewHolderAlphaTextMessage(
+            MessageOwnerType.ALPHA_DOCUMENT.ordinal -> {
+                ViewHolderAlphaDocumentMessage(
                     view = LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.alphaTextLayoutId, parent, false),
-                    chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
-                )
-            }
-            MessageOwnerType.ALPHA_IMAGE.ordinal -> {
-                ViewHolderAlphaTextMessage(
-                    view = LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.alphaTextLayoutId, parent, false),
+                        .inflate(chatStyle.alphaDocumentLayoutId, parent, false),
                     chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
@@ -83,17 +76,10 @@ class ChatKitV4MessageAdapter(
                     chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
-            MessageOwnerType.BETA_VIDEO.ordinal -> {
-                ViewHolderBetaTextMessage(
+            MessageOwnerType.BETA_DOCUMENT.ordinal -> {
+                ViewHolderBetaDocumentMessage(
                     LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.betaTextLayoutId, parent, false),
-                    chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
-                )
-            }
-            MessageOwnerType.BETA_IMAGE.ordinal -> {
-                ViewHolderBetaTextMessage(
-                    LayoutInflater.from(parent.context)
-                        .inflate(chatStyle.betaTextLayoutId, parent, false),
+                        .inflate(chatStyle.betaDocumentLayoutId, parent, false),
                     chatKitV4ListAdapterCallback = chatKitV4ListAdapterCallback
                 )
             }
@@ -125,12 +111,20 @@ class ChatKitV4MessageAdapter(
             is ViewHolderAlphaVoiceMessage -> {
                 holder.bind(messageModel)
             }
+            is ViewHolderAlphaDocumentMessage -> {
+                holder.bind(messageModel)
+            }
+
             is ViewHolderBetaTextMessage -> {
                 holder.bind(messageModel)
             }
             is ViewHolderBetaVoiceMessage -> {
                 holder.bind(messageModel)
             }
+            is ViewHolderBetaDocumentMessage -> {
+                holder.bind(messageModel)
+            }
+
             is ViewHolderSystemMessage -> {
                 holder.bind(messageModel)
             }
@@ -159,6 +153,9 @@ class ChatKitV4MessageAdapter(
                     MessageContentType.IMAGE.name -> {
                         MessageOwnerType.ALPHA_IMAGE.ordinal
                     }
+                    MessageContentType.DOCUMENT.name -> {
+                        MessageOwnerType.ALPHA_DOCUMENT.ordinal
+                    }
                     else -> {
                         MessageOwnerType.UNDEFINED.ordinal
                     }
@@ -177,6 +174,9 @@ class ChatKitV4MessageAdapter(
                     }
                     MessageContentType.IMAGE.name -> {
                         MessageOwnerType.BETA_IMAGE.ordinal
+                    }
+                    MessageContentType.DOCUMENT.name -> {
+                        MessageOwnerType.BETA_DOCUMENT.ordinal
                     }
                     else -> {
                         MessageOwnerType.UNDEFINED.ordinal
@@ -205,6 +205,5 @@ class ChatKitV4MessageAdapter(
             else -> MessageOwnerType.UNDEFINED.ordinal
         }
     }
-
 
 }

@@ -3,7 +3,7 @@ package ir.vasl.chatkitv4core.util
 object PublicValue {
 
     const val DATABASE_NAME = "ChatKitV4.db"
-    const val DATABASE_VERSION = 1
+    const val DATABASE_VERSION = 2
 
     const val CHATKIR_V4_PAGE_SIZE = 20
     const val CHATKIR_V4_PAGE_STARTING_INDEX = 1

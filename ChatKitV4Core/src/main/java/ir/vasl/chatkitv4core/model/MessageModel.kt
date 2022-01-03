@@ -19,42 +19,48 @@ data class MessageModel(
     val createAt: Long,
 
     @ColumnInfo(name = "title")
-    val title: String = "",
+    val title: String? = "",
 
     @ColumnInfo(name = "subTitle")
-    val subTitle: String = "",
+    val subTitle: String? = "",
 
     @ColumnInfo(name = "avatar")
-    var avatar: String = "",
+    var avatar: String? = "",
 
     @ColumnInfo(name = "date")
-    val date: String = "",
+    val date: String? = "",
 
     @ColumnInfo(name = "messageOwnerType")
-    val messageOwnerType: String = MessageOwnerType.ALPHA.name,
+    val messageOwnerType: String? = MessageOwnerType.ALPHA.name,
 
     @ColumnInfo(name = "messageContentType")
-    val messageContentType: String = MessageContentType.TEXT.name,
+    val messageContentType: String? = MessageContentType.TEXT.name,
 
     @ColumnInfo(name = "remoteFileUrl")
-    var remoteFileUrl: String = "",
+    var remoteFileUrl: String? = "",
 
     @ColumnInfo(name = "localFileAddress")
-    var localFileAddress: String = "",
+    var localFileAddress: String? = "",
 
     @ColumnInfo(name = "chatId")
     val chatId: String,
 
     @ColumnInfo(name = "progressPlayer")
-    var progressPlayer: Int = 0,
+    var progressPlayer: Int? = 0,
 
     @ColumnInfo(name = "progressDownloader")
-    var progressDownloader: Int = 0,
+    var progressDownloader: Int? = 0,
 
     @ColumnInfo(name = "messageConditionStatus")
-    var messageConditionStatus: String = MessageConditionStatus.IDLE.name
+    var messageConditionStatus: String? = MessageConditionStatus.IDLE.name,
 
-) {
+    @ColumnInfo(name = "fileName")
+    var fileName: String? = "",
+
+    @ColumnInfo(name = "fileSize")
+    var fileSize: String? = "",
+
+    ) {
 
     fun getHumanReadableDate(): String {
         return DateTimeHelper.getDateCurrentTimeZone(createAt)
