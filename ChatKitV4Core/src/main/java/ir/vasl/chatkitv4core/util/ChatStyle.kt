@@ -39,7 +39,7 @@ class ChatStyle(context: Context, attrs: AttributeSet?) : ChatBaseStyle(context,
             )
             chatStyle.alphaDocumentLayoutId = typedArray.getResourceId(
                 R.styleable.ChatKitV4_alpha_document_layout_id,
-                R.layout.defaul_beta_document_layout
+                R.layout.defaul_alpha_document_layout
             )
 
             // beta scope
@@ -53,7 +53,7 @@ class ChatStyle(context: Context, attrs: AttributeSet?) : ChatBaseStyle(context,
             )
             chatStyle.betaDocumentLayoutId = typedArray.getResourceId(
                 R.styleable.ChatKitV4_beta_document_layout_id,
-                R.layout.defaul_beta_voice_layout
+                R.layout.defaul_beta_document_layout
             )
 
             // system scope

@@ -93,6 +93,13 @@ class ChatKitV4MessageAdapter(
             }
 
             // undefined scope
+            MessageOwnerType.UNDEFINED.ordinal -> {
+                ViewHolderNotSupported(
+                    LayoutInflater.from(parent.context)
+                        .inflate(chatStyle.notSupportedLayoutId, parent, false)
+                )
+            }
+
             else -> {
                 ViewHolderNotSupported(
                     LayoutInflater.from(parent.context)

@@ -11,4 +11,7 @@
     <color name="lightWhite">#FAF9F9</color>
     <color name="light_gray">#8C8A8A</color>
     <color name="red">#E91E63</color>
+    <color name="green_dark">#009989</color>
+    <color name="brown_icon">#8b9272</color>
+
 </resources>
