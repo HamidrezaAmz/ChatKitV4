@@ -53,7 +53,7 @@ dependencies {
 
     // chat kit
     // dependency
-    // implementation 'com.github.HamidrezaAmz:ChatKitV4:1.0.6'
+    // implementation 'com.github.HamidrezaAmz:ChatKitV4:1.0.31'
 
     // version
     testImplementation 'junit:junit:4.13.2'
