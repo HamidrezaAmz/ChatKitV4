@@ -6,6 +6,7 @@ import com.huxq17.download.core.DownloadListener
 import ir.vasl.chatkitv4core.model.MessageModel
 import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageConditionStatus
 import ir.vasl.chatkitv4core.util.PublicValue
+import ir.vasl.chatkitv4core.util.helper.RemoteFileUrlHelper
 import ir.vasl.chatkitv4core.util.player.interfaces.MediaHelperCallback
 import okhttp3.Request
 
@@ -53,7 +54,8 @@ class ChatKitV4DownloadManager(
     }
 
     fun submitNewDownloadRequest(messageModel: MessageModel) {
-        Pump.newRequest(messageModel.remoteFileUrl)
+        val validRemoteFileAddress = RemoteFileUrlHelper.cleanAndValidateUrl(messageModel.remoteFileUrl)
+        Pump.newRequest(validRemoteFileAddress)
             .setId(messageModel.id)
             .setRequestBuilder(Request.Builder())
             .tag(PublicValue.SAMPLE_FILE_TAG)

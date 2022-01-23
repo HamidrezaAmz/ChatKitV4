@@ -15,6 +15,7 @@ import com.anggrayudi.storage.SimpleStorageHelper
 import com.anggrayudi.storage.file.getFormattedSize
 import ir.vasl.chatkitv4.databinding.ActivityMainBinding
 import ir.vasl.chatkitv4.helpers.ContextWrapper
+import ir.vasl.chatkitv4.helpers.PreviewHelper
 import ir.vasl.chatkitv4.helpers.UploadFileSimulator
 import ir.vasl.chatkitv4.utils.PublicValue
 import ir.vasl.chatkitv4core.model.MessageModel
@@ -28,6 +29,7 @@ import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4ListCallback
 import ir.vasl.chatkitv4core.viewmodel.ChatKitV4ViewModel
 import ir.vasl.chatkitv4core.viewmodel.factory.ChatKitV4ViewModelFactory
 import kotlinx.coroutines.launch
+import java.io.File
 import java.util.*
 
 class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputCallback {
@@ -283,6 +285,10 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
 
     override fun onPreviewFileClicked(messageModel: MessageModel?) {
         Toast.makeText(this@MainActivity, "onPreviewFileClicked", Toast.LENGTH_SHORT).show()
+        Log.i(TAG, "onPreviewFileClicked: file address: ${messageModel?.localFileAddress}")
+
+        val file = File(messageModel?.localFileAddress)
+        file.let { PreviewHelper.openFile(it, this@MainActivity) }
     }
 
 }
