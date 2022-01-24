@@ -75,7 +75,7 @@ class ViewHolderAlphaDocumentMessage(
                     messageModel?.messageConditionStatus = MessageConditionStatus.IDLE.name
                     chatKitV4ListAdapterCallback?.onPreviewFileClicked(messageModel)
                 }
-                letsDownloadAgain(messageModel) -> {
+                else -> {
                     messageModel?.messageConditionStatus = MessageConditionStatus.DOWNLOAD_STARTED.name
                     chatKitV4ListAdapterCallback?.onDownloadFileClicked(messageModel)
                 }
@@ -157,10 +157,6 @@ class ViewHolderAlphaDocumentMessage(
         val resultExist = FileHelper.isValidFile(localFileAddress)
 
         return resultEmpty && resultExist
-    }
-
-    private fun letsDownloadAgain(messageModel: MessageModel?): Boolean {
-        return true
     }
 
 }
