@@ -62,23 +62,18 @@ class ViewHolderAlphaDocumentMessage(
             // callback click
             chatKitV4ListAdapterCallback?.onMessageClicked(messageModel)
 
-            when {
-                letsUpload(messageModel) -> {
-                    messageModel?.messageConditionStatus = MessageConditionStatus.UPLOAD_IN_PROGRESS.name
-                    chatKitV4ListAdapterCallback?.onUploadFileClicked(messageModel)
-                }
-                letsDownload(messageModel) -> {
-                    messageModel?.messageConditionStatus = MessageConditionStatus.DOWNLOAD_STARTED.name
-                    chatKitV4ListAdapterCallback?.onDownloadFileClicked(messageModel)
-                }
-                letsPreview(messageModel) -> {
-                    messageModel?.messageConditionStatus = MessageConditionStatus.IDLE.name
-                    chatKitV4ListAdapterCallback?.onPreviewFileClicked(messageModel)
-                }
-                else -> {
-                    messageModel?.messageConditionStatus = MessageConditionStatus.DOWNLOAD_STARTED.name
-                    chatKitV4ListAdapterCallback?.onDownloadFileClicked(messageModel)
-                }
+            if (letsUpload(messageModel)) {
+                messageModel?.messageConditionStatus = MessageConditionStatus.UPLOAD_IN_PROGRESS.name
+                chatKitV4ListAdapterCallback?.onUploadFileClicked(messageModel)
+            } else if (letsDownload(messageModel)) {
+                messageModel?.messageConditionStatus = MessageConditionStatus.DOWNLOAD_STARTED.name
+                chatKitV4ListAdapterCallback?.onDownloadFileClicked(messageModel)
+            } else if (letsPreview(messageModel)) {
+                messageModel?.messageConditionStatus = MessageConditionStatus.IDLE.name
+                chatKitV4ListAdapterCallback?.onPreviewFileClicked(messageModel)
+            } else {
+                messageModel?.messageConditionStatus = MessageConditionStatus.DOWNLOAD_STARTED.name
+                chatKitV4ListAdapterCallback?.onDownloadFileClicked(messageModel)
             }
 
             syncMessageConditionWithUI(messageModel)

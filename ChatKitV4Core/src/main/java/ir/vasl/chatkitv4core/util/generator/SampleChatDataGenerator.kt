@@ -66,7 +66,7 @@ class SampleChatDataGenerator {
                 title = getTitle(),
                 date = getDate(),
                 fileName = "sample file name new",
-                fileSize = "245 K.B",
+                fileSize = "244 K.B",
                 messageOwnerType = messageOwnerType.name,
                 messageContentType = messageContentType.name,
                 remoteFileUrl = PublicValue.SAMPLE_URL_FILE,

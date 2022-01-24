@@ -33,7 +33,8 @@ class ChatKitV4DownloadManager(
             }
 
             override fun onSuccess() {
-                Log.i(TAG, "onSuccess: ${downloadInfo.filePath}")
+                Log.i(TAG, "onSuccess:FILEPATH ${downloadInfo.filePath}")
+                Log.i(TAG, "onSuccess:URL ${downloadInfo.url}")
                 mediaHelperCallback?.onMediaStateDownloaderUpdated(
                     messageId = downloadInfo.id,
                     messageConditionStatus = MessageConditionStatus.DOWNLOAD_SUCCEED,

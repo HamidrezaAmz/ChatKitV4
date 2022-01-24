@@ -1,44 +1,54 @@
 package ir.vasl.chatkitv4core.util.helper
 
-import java.net.URI
+import android.net.Uri
 
 object RemoteFileUrlHelper {
 
     fun cleanAndValidateUrl(remoteFileUrl: String?): String? {
-        return remoteFileUrl?.let { getUrlWithExtension(it) }
+        val mimeType = getMimeFromUrl(remoteFileUrl)
+        val extension = getExtensionByMimeType(mimeType)
+
+        if (extension.isNullOrEmpty().not())
+            return remoteFileUrl + extension
+
+        return remoteFileUrl
     }
 
-    private fun getUrlWithExtension(remoteFileUrl: String): String {
-        return try {
-            val uri = URI(remoteFileUrl)
-            val path = uri.path
-            val fileExtension = getFileExtension(path)
-            if (fileExtension.isNullOrEmpty().not())
-                remoteFileUrl + "." + fileExtension
-            else
-                remoteFileUrl
-        } catch (e: Exception) {
-            remoteFileUrl
+    fun getMimeFromUrl(url: String?): String {
+
+        val uri = Uri.parse(url)
+        val param = uri.getQueryParameter("mimeType") ?: return ""
+
+        return if (param.startsWith("image")) {
+            "image"
+        } else if (param.startsWith("application/vnd.openxmlformats-officedocument.wordprocessingml.document")) {
+            "document"
+        } else if (param.startsWith("application/msword")) {
+            "document"
+        } else if (param.startsWith("application/pdf")) {
+            "pdf"
+        } else if (param.startsWith("audio")) {
+            "mp3"
+        } else {
+            ""
         }
     }
 
-    private fun getFileExtension(remoteFileUrl: String): String {
-        try {
-            val emptyExt = ""
-            if (remoteFileUrl.contains(".")) {
-                val sub = remoteFileUrl.substring(remoteFileUrl.lastIndexOf('.') + 1)
-                if (sub.isNullOrEmpty())
-                    return emptyExt
-                return if (sub.contains("?"))
-                    sub.substring(0, sub.indexOf('?'))
-                else
-                    sub
-            }
-            return emptyExt
-        } catch (e: Exception) {
-            return ""
+    fun getExtensionByMimeType(mimetype: String): String {
+
+        return if (mimetype.startsWith("image")) {
+            ".jpg"
+        } else if (mimetype.startsWith("application/vnd.openxmlformats-officedocument.wordprocessingml.document")) {
+            ".docx"
+        } else if (mimetype.startsWith("application/msword")) {
+            ".doc"
+        } else if (mimetype.startsWith("application/pdf")) {
+            ".pdf"
+        } else if (mimetype.startsWith("audio")) {
+            ".mp3"
+        } else {
+            ""
         }
     }
-
 
 }
