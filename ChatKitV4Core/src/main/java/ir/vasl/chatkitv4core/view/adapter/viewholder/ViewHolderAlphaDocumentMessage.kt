@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ir.vasl.chatkitv4core.R
 import ir.vasl.chatkitv4core.model.MessageModel
 import ir.vasl.chatkitv4core.model.chatkitv4enums.MessageConditionStatus
+import ir.vasl.chatkitv4core.util.helper.FileHelper
 import ir.vasl.chatkitv4core.util.player.interfaces.MediaHelperCallback
 import ir.vasl.chatkitv4core.view.interfaces.ChatKitV4ListAdapterCallback
 
@@ -73,6 +74,10 @@ class ViewHolderAlphaDocumentMessage(
                 letsPreview(messageModel) -> {
                     messageModel?.messageConditionStatus = MessageConditionStatus.IDLE.name
                     chatKitV4ListAdapterCallback?.onPreviewFileClicked(messageModel)
+                }
+                letsDownloadAgain(messageModel) -> {
+                    messageModel?.messageConditionStatus = MessageConditionStatus.DOWNLOAD_STARTED.name
+                    chatKitV4ListAdapterCallback?.onDownloadFileClicked(messageModel)
                 }
             }
 
@@ -145,7 +150,17 @@ class ViewHolderAlphaDocumentMessage(
     }
 
     private fun letsPreview(messageModel: MessageModel?): Boolean {
-        return (messageModel?.localFileAddress.isNullOrEmpty().not() && messageModel?.remoteFileUrl.isNullOrEmpty().not())
+
+        val localFileAddress = messageModel?.localFileAddress ?: ""
+
+        val resultEmpty = (messageModel?.localFileAddress.isNullOrEmpty().not() && messageModel?.remoteFileUrl.isNullOrEmpty().not())
+        val resultExist = FileHelper.isValidFile(localFileAddress)
+
+        return resultEmpty && resultExist
+    }
+
+    private fun letsDownloadAgain(messageModel: MessageModel?): Boolean {
+        return true
     }
 
 }

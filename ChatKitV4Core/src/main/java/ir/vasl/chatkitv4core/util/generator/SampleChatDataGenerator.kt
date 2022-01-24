@@ -65,11 +65,11 @@ class SampleChatDataGenerator {
                 createAt = System.currentTimeMillis(),
                 title = getTitle(),
                 date = getDate(),
-                fileName = "sample file name",
+                fileName = "sample file name new",
                 fileSize = "245 K.B",
                 messageOwnerType = messageOwnerType.name,
                 messageContentType = messageContentType.name,
-                remoteFileUrl = PublicValue.SAMPLE_URL_MP3,
+                remoteFileUrl = PublicValue.SAMPLE_URL_FILE,
                 chatId = chatId
             )
         }
