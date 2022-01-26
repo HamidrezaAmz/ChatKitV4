@@ -100,8 +100,8 @@ class ChatKitV4 @kotlin.jvm.JvmOverloads constructor(
         return binding.chatKitV4Input.getRecordView()
     }
 
-    fun showAttachmentIcon(visible: Boolean = true) {
-        binding.chatKitV4Input.showAttachmentIcon(visible)
+    fun setAttachmentEnable(visible: Boolean = true) {
+        binding.chatKitV4Input.setAttachmentEnable(visible)
     }
 
     fun setVoiceRecorderEnable(voiceRecorderEnable: Boolean = true) {

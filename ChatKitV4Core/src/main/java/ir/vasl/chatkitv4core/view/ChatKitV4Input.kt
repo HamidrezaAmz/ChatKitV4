@@ -29,6 +29,9 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
 
     private lateinit var chatKitV4InputCallback: ChatKitV4InputCallback
 
+    private var showVoiceRecorderIcon: Boolean = true
+    private var showAttachmentIcon: Boolean = true
+
     init {
         addView(binding.root)
         initializeRecordView()
@@ -45,6 +48,7 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
         binding.recordView.setOnRecordListener(object : OnRecordListener {
 
             override fun onStart() {
+                showAttachmentIcon(false)
                 showUserInputHint(false)
                 if (::chatKitV4InputCallback.isInitialized)
                     chatKitV4InputCallback.onRecorderStart()
@@ -52,17 +56,20 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
 
             override fun onCancel() {
                 showUserInputHint()
+                showAttachmentIcon()
                 if (::chatKitV4InputCallback.isInitialized)
                     chatKitV4InputCallback.onRecorderCancel()
             }
 
             override fun onFinish(recordTime: Long, limitReached: Boolean) {
+                showAttachmentIcon()
                 showUserInputHint()
                 if (::chatKitV4InputCallback.isInitialized)
                     chatKitV4InputCallback.onRecorderFinish(recordTime, limitReached)
             }
 
             override fun onLessThanSecond() {
+                showAttachmentIcon()
                 showUserInputHint()
                 if (::chatKitV4InputCallback.isInitialized)
                     chatKitV4InputCallback.onRecorderLessThanSecond()
@@ -113,9 +120,9 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
 
             override fun afterTextChanged(text: Editable?) {
                 if (text.toString().isNotEmpty()) {
-                    setVoiceRecorderEnable(false)
+                    showVoiceRecorderIcon(false)
                 } else {
-                    setVoiceRecorderEnable()
+                    showVoiceRecorderIcon(true)
                 }
             }
         })
@@ -129,14 +136,19 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
         }
     }
 
-    fun setVoiceRecorderEnable(enableVoiceRecorder: Boolean = true) {
-        if (enableVoiceRecorder) {
+    private fun showVoiceRecorderIcon(enableVoiceRecorder: Boolean = true) {
+        if (enableVoiceRecorder && showVoiceRecorderIcon) {
             binding.recordButton.setImageResource(R.drawable.recv_ic_mic_white)
             binding.recordButton.isListenForRecord = true
         } else {
             binding.recordButton.setImageResource(R.drawable.ic_baseline_send_24)
             binding.recordButton.isListenForRecord = false
         }
+    }
+
+    fun setVoiceRecorderEnable(enableVoiceRecorder: Boolean) {
+        this.showVoiceRecorderIcon = enableVoiceRecorder
+        showVoiceRecorderIcon(enableVoiceRecorder)
     }
 
     fun blockChatKitV4Input() {
@@ -151,11 +163,16 @@ class ChatKitV4Input @kotlin.jvm.JvmOverloads constructor(
         return binding.recordView
     }
 
-    fun showAttachmentIcon(visible: Boolean = true) {
-        if (visible)
+    private fun showAttachmentIcon(visible: Boolean = true) {
+        if (visible && showAttachmentIcon)
             binding.ibAttachment.visibility = VISIBLE
         else
             binding.ibAttachment.visibility = GONE
+    }
+
+    fun setAttachmentEnable(enableAttachment: Boolean) {
+        this.showAttachmentIcon = enableAttachment
+        showAttachmentIcon(enableAttachment)
     }
 
 }

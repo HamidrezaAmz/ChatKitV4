@@ -169,6 +169,9 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
         binding.chatKitV4.initializeChatKitV4ListCallback(this@MainActivity)
         binding.chatKitV4.initializeChatKitV4InputCallback(this@MainActivity)
 
+        // binding.chatKitV4.setVoiceRecorderEnable(false)
+        // binding.chatKitV4.setAttachmentEnable(false)
+
         lifecycleScope.launch {
             binding.chatKitV4.initializeChatKitV4ViewModel(chatKitV4ViewModel)
         }
