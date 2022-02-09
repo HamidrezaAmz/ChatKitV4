@@ -22,6 +22,9 @@
 
         <item name="beta_text_layout_id">@layout/beta_text_layout</item>
         <item name="beta_voice_layout_id">@layout/beta_voice_layout</item>
+        <item name="beta_document_layout_id">@layout/beta_document_layout</item>
+
+        <item name="system_text_layout_id">@layout/system_text_layout</item>
 
         <item name="not_supported_layout_id">@layout/not_supported_layout</item>
 

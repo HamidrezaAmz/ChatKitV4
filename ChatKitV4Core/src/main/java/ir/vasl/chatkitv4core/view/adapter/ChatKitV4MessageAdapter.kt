@@ -99,7 +99,6 @@ class ChatKitV4MessageAdapter(
                         .inflate(chatStyle.notSupportedLayoutId, parent, false)
                 )
             }
-
             else -> {
                 ViewHolderNotSupported(
                     LayoutInflater.from(parent.context)
@@ -135,6 +134,7 @@ class ChatKitV4MessageAdapter(
             is ViewHolderSystemMessage -> {
                 holder.bind(messageModel)
             }
+
             is ViewHolderNotSupported -> {
                 holder.bind(messageModel)
             }

@@ -10,7 +10,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
-        android:background="@color/green"
+        android:background="@color/light_gray"
         android:padding="@dimen/padding_12dp">
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -28,7 +28,7 @@
             tools:text="John Doe" />
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@id/tv_message"
+            android:id="@id/tv_sub_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/tv_title"

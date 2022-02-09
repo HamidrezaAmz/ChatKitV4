@@ -54,8 +54,12 @@
         <entry key="app/src/main/res/drawable/ic_thumbnail_doc.xml" value="0.2675925925925926" />
         <entry key="app/src/main/res/drawable/seekbar_progress.xml" value="0.2948717948717949" />
         <entry key="app/src/main/res/drawable/seekbar_style.xml" value="0.2935185185185185" />
+        <entry key="app/src/main/res/drawable/selector_beta.xml" value="0.2948717948717949" />
         <entry key="app/src/main/res/drawable/selector_other.xml" value="0.2948717948717949" />
         <entry key="app/src/main/res/drawable/selector_self.xml" value="0.28888888888888886" />
+        <entry key="app/src/main/res/drawable/selector_system.xml" value="0.2948717948717949" />
+        <entry key="app/src/main/res/drawable/shape_beta_bubble.xml" value="0.2948717948717949" />
+        <entry key="app/src/main/res/drawable/shape_beta_bubble_selected.xml" value="0.2948717948717949" />
         <entry key="app/src/main/res/drawable/shape_circle.xml" value="0.2601851851851852" />
         <entry key="app/src/main/res/drawable/shape_other_bubble.xml" value="0.2740740740740741" />
         <entry key="app/src/main/res/drawable/shape_other_bubble_selected.xml" value="0.2948717948717949" />
@@ -64,6 +68,8 @@
         <entry key="app/src/main/res/drawable/shape_round_with_shadow.xml" value="0.24259259259259258" />
         <entry key="app/src/main/res/drawable/shape_self_bubble.xml" value="0.29074074074074074" />
         <entry key="app/src/main/res/drawable/shape_self_bubble_selected.xml" value="0.28888888888888886" />
+        <entry key="app/src/main/res/drawable/shape_system_bubble.xml" value="0.2948717948717949" />
+        <entry key="app/src/main/res/drawable/shape_system_bubble_selected.xml" value="0.2948717948717949" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.18888888888888888" />
         <entry key="app/src/main/res/layout/alpha_document_layout.xml" value="0.25" />
         <entry key="app/src/main/res/layout/alpha_text_layout.xml" value="0.29791666666666666" />
@@ -78,6 +84,7 @@
         <entry key="app/src/main/res/layout/self_bubble.xml" value="0.2361111111111111" />
         <entry key="app/src/main/res/layout/self_text_layout.xml" value="0.29791666666666666" />
         <entry key="app/src/main/res/layout/self_voice_layout.xml" value="0.24722222222222223" />
+        <entry key="app/src/main/res/layout/system_text_layout.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/menu/main_menu.xml" value="0.2833333333333333" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2657407407407407" />
         <entry key="chatkitv4sdk/src/main/res/layout/layout_chatkit_v4.xml" value="0.2833333333333333" />

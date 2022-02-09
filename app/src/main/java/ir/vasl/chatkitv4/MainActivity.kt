@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
                 )
             }
 
-            R.id.action_add_server_text_message -> {
+            R.id.action_add_beta_text_message -> {
 
                 binding.chatKitV4.addNewMessageIntoChatKitV4(
                     SampleChatDataGenerator.getMessage(
@@ -109,13 +109,24 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
                 )
             }
 
-            R.id.action_add_server_voice_message -> {
+            R.id.action_add_beta_voice_message -> {
 
                 binding.chatKitV4.addNewMessageIntoChatKitV4(
                     SampleChatDataGenerator.getMessage(
                         chatId = PublicValue.CHAT_ID,
                         messageOwnerType = MessageOwnerType.BETA,
                         messageContentType = MessageContentType.VOICE
+                    )
+                )
+            }
+
+            R.id.action_add_system_text_message -> {
+
+                binding.chatKitV4.addNewMessageIntoChatKitV4(
+                    SampleChatDataGenerator.getMessage(
+                        chatId = PublicValue.CHAT_ID,
+                        messageOwnerType = MessageOwnerType.SYSTEM,
+                        messageContentType = MessageContentType.TEXT
                     )
                 )
             }
