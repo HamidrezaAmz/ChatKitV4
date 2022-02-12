@@ -60,6 +60,9 @@ data class MessageModel(
     @ColumnInfo(name = "fileSize")
     var fileSize: String? = "",
 
+    @ColumnInfo(name = "userId")
+    var userId: String? = "",
+
     ) {
 
     fun getHumanReadableDate(): String {

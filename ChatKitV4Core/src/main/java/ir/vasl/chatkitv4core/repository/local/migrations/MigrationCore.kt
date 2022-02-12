@@ -14,4 +14,10 @@ object MigrationCore {
         }
     }
 
+    val MIGRATION_2_3 = object : Migration(2, 3) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("ALTER TABLE $message_table_name ADD COLUMN 'userId' TEXT DEFAULT ''")
+        }
+    }
+
 }

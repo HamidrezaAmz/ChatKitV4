@@ -33,6 +33,7 @@ abstract class ChatKitV4Database : RoomDatabase() {
                 PublicValue.DATABASE_NAME
             ).allowMainThreadQueries()
                 .addMigrations(MigrationCore.MIGRATION_1_2)
+                .addMigrations(MigrationCore.MIGRATION_2_3)
                 .build()
             INSTANCE = instance
             instance
