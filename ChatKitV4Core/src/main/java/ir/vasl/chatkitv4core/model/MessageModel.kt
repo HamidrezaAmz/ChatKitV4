@@ -31,7 +31,7 @@ data class MessageModel(
     val date: String? = "",
 
     @ColumnInfo(name = "messageOwnerType")
-    val messageOwnerType: String? = MessageOwnerType.ALPHA.name,
+    var messageOwnerType: String? = MessageOwnerType.ALPHA.name,
 
     @ColumnInfo(name = "messageContentType")
     val messageContentType: String? = MessageContentType.TEXT.name,
