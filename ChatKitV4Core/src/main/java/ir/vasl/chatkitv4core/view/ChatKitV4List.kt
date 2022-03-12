@@ -226,7 +226,6 @@ class ChatKitV4List @kotlin.jvm.JvmOverloads constructor(
 
     fun addMessageModelIntoDatabase(messageModel: MessageModel) {
         chatKitV4ViewModel.addMessageIntoDatabase(messageModel)
-        moveToStartOfChatKitV4() // simulate move list to the end
     }
 
     fun addMessageModelListIntoDatabase(messageModelList: List<MessageModel>) {
