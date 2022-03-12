@@ -13,10 +13,10 @@ interface MessageDao {
     @Query("SELECT * FROM table_messages WHERE chatId =:chatId AND id =:messageId")
     fun getMessageByMessageId(chatId: String, messageId: Int): MessageModel
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insert(movieEntity: MessageModel)
 
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(movieEntityList: List<MessageModel>)
 
     @Delete

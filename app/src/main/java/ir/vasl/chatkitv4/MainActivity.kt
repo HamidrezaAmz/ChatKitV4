@@ -216,8 +216,12 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
         binding.chatKitV4.addNewMessageIntoChatKitV4(messageModel)
     }
 
-    override fun onReachedToEnd() {
-        Log.i(TAG, "MainActivity --> onReachedToEnd()")
+    override fun onReachedToEnd(messageModel: MessageModel?) {
+        Log.i(TAG, "MainActivity --> onReachedToEnd() | $messageModel")
+    }
+
+    override fun onReachedToStart(messageModel: MessageModel?) {
+        Log.i(TAG, "MainActivity --> onReachedToStart() | $messageModel")
     }
 
     override fun onMessageClicked(messageModel: MessageModel?) {

@@ -12,7 +12,7 @@ import ir.vasl.chatkitv4core.util.helper.DateTimeHelper
 data class MessageModel(
 
     @PrimaryKey
-    @ColumnInfo(name = "id")
+    @ColumnInfo(name = "id") // this id used for local unique message items
     val id: String,
 
     @ColumnInfo(name = "createdAt")
@@ -60,8 +60,11 @@ data class MessageModel(
     @ColumnInfo(name = "fileSize")
     var fileSize: String? = "",
 
-    @ColumnInfo(name = "userId")
+    @ColumnInfo(name = "userId") // this id used for checking message type based on user ids
     var userId: String? = "",
+
+    @ColumnInfo(name = "serverMessageId") // this id used for storing server side ids
+    var serverMessageId: String? = "",
 
     ) {
 

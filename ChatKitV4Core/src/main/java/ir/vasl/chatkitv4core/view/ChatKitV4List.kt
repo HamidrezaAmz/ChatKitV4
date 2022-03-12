@@ -176,17 +176,30 @@ class ChatKitV4List @kotlin.jvm.JvmOverloads constructor(
         this.binding.recyclerView.addOnScrollListener(object : RecyclerView.OnScrollListener() {
 
             override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                super.onScrollStateChanged(recyclerView, newState)
+
+                if (!recyclerView.canScrollVertically(1) && !recyclerView.canScrollVertically(-1)) {
+                    return
+                } else if (!recyclerView.canScrollVertically(-1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    if (::chatKitV4ListCallback.isInitialized) {
+                        val currListItems = chatKitV4MessageAdapter.snapshot().items
+                        if (currListItems.isNotEmpty()) {
+                            val lastItem = currListItems[currListItems.size - 1]
+                            chatKitV4ListCallback.onReachedToEnd(lastItem)
+                        }
+                    }
+                } else if (!recyclerView.canScrollVertically(1) && newState == RecyclerView.SCROLL_STATE_IDLE) {
+                    if (::chatKitV4ListCallback.isInitialized) {
+                        val currListItems = chatKitV4MessageAdapter.snapshot().items
+                        if (currListItems.isNotEmpty()) {
+                            val lastItem = currListItems[0]
+                            chatKitV4ListCallback.onReachedToStart(lastItem)
+                        }
+                    }
+                }
             }
 
             override fun onScrolled(recyclerView: RecyclerView, dx: Int, dy: Int) {
                 super.onScrolled(recyclerView, dx, dy)
-                if (!recyclerView.canScrollVertically(1) && !recyclerView.canScrollVertically(-1)) {
-                    return
-                } else if (!recyclerView.canScrollVertically(-1)) {
-                    if (::chatKitV4ListCallback.isInitialized)
-                        chatKitV4ListCallback.onReachedToEnd()
-                }
             }
         })
     }

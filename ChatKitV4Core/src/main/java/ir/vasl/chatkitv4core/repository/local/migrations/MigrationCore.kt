@@ -20,4 +20,10 @@ object MigrationCore {
         }
     }
 
+    val MIGRATION_3_4 = object : Migration(3, 4) {
+        override fun migrate(database: SupportSQLiteDatabase) {
+            database.execSQL("ALTER TABLE $message_table_name ADD COLUMN 'serverMessageId' TEXT DEFAULT ''")
+        }
+    }
+
 }

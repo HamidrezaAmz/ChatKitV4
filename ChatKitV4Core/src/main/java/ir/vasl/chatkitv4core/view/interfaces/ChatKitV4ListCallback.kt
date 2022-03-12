@@ -14,7 +14,8 @@ public interface ChatKitV4ListCallback {
     fun onRecordEnded() {}
     fun onFileClicked() {}
     fun onExtraOptionClicked() {}
-    fun onReachedToEnd() {}
+    fun onReachedToEnd(messageModel: MessageModel?) {}
+    fun onReachedToStart(messageModel: MessageModel?) {}
     fun onPlayPauseClicked(messageModel: MessageModel?) {}
     fun onFileClicked(messageModel: MessageModel?) {}
     fun onDownloadFileClicked(messageModel: MessageModel?) {}
