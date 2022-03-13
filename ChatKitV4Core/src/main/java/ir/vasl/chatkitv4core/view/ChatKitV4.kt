@@ -64,11 +64,11 @@ class ChatKitV4 @kotlin.jvm.JvmOverloads constructor(
         binding.chatKitV4List.clearAll()
     }
 
-    fun moveToStartOfChatKitV4(delayTime: Long = 500) {
+    fun moveToStartOfChatKitV4(delayTime: Long = 400) {
         binding.chatKitV4List.moveToStartOfChatKitV4(delayTime)
     }
 
-    fun moveToEndOfChatKitV4(delayTime: Long = 500) {
+    fun moveToEndOfChatKitV4(delayTime: Long = 400) {
         binding.chatKitV4List.moveToEndOfChatKitV4(delayTime)
     }
 

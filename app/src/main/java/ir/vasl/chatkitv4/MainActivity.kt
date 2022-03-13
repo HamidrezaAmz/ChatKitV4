@@ -245,6 +245,7 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
         )
 
         binding.chatKitV4.addNewMessageIntoChatKitV4(messageModel)
+        binding.chatKitV4.moveToStartOfChatKitV4()
     }
 
     override fun onRecorderStart() {
