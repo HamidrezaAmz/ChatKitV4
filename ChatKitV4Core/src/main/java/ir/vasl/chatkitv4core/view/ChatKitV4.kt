@@ -4,6 +4,7 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.FrameLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import com.devlomi.record_view.RecordView
 import ir.vasl.chatkitv4core.databinding.LayoutChatkitV4Binding
 import ir.vasl.chatkitv4core.model.MessageModel
@@ -64,11 +65,11 @@ class ChatKitV4 @kotlin.jvm.JvmOverloads constructor(
         binding.chatKitV4List.clearAll()
     }
 
-    fun moveToStartOfChatKitV4(delayTime: Long = 400) {
+    fun moveToStartOfChatKitV4(delayTime: Long = 500) {
         binding.chatKitV4List.moveToStartOfChatKitV4(delayTime)
     }
 
-    fun moveToEndOfChatKitV4(delayTime: Long = 400) {
+    fun moveToEndOfChatKitV4(delayTime: Long = 500) {
         binding.chatKitV4List.moveToEndOfChatKitV4(delayTime)
     }
 
@@ -106,6 +107,14 @@ class ChatKitV4 @kotlin.jvm.JvmOverloads constructor(
 
     fun setVoiceRecorderEnable(voiceRecorderEnable: Boolean = true) {
         binding.chatKitV4Input.setVoiceRecorderEnable(voiceRecorderEnable)
+    }
+
+    fun getHeaderView(): ConstraintLayout {
+        return binding.holderHeaderView
+    }
+
+    fun getFooterView(): ConstraintLayout {
+        return binding.holderFooterView
     }
 
 }

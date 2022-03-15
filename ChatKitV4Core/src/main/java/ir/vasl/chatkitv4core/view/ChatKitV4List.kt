@@ -244,13 +244,13 @@ class ChatKitV4List @kotlin.jvm.JvmOverloads constructor(
         chatKitV4ViewModel.clearAll()
     }
 
-    fun moveToEndOfChatKitV4(delayTime: Long = 400) {
+    fun moveToEndOfChatKitV4(delayTime: Long = 500) {
         Handler(Looper.getMainLooper()).postDelayed({
             binding.recyclerView.layoutManager?.smoothScrollToPosition(binding.recyclerView, RecyclerView.State(), 0)
         }, delayTime)
     }
 
-    fun moveToStartOfChatKitV4(delayTime: Long = 400) {
+    fun moveToStartOfChatKitV4(delayTime: Long = 500) {
         Handler(Looper.getMainLooper()).postDelayed({
             val targetIndex = binding.recyclerView.adapter?.itemCount ?: -1
             binding.recyclerView.layoutManager?.smoothScrollToPosition(binding.recyclerView, RecyclerView.State(), targetIndex)

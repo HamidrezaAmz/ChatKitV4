@@ -4,14 +4,30 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/holder_header_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <ir.vasl.chatkitv4core.view.ChatKitV4List
         android:id="@+id/chatKitV4List"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/chatKitV4Input"
+        app:layout_constraintBottom_toTopOf="@id/holder_footer_view"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/holder_header_view" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/holder_footer_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/chatKitV4Input"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <ir.vasl.chatkitv4core.view.ChatKitV4Input
         android:id="@+id/chatKitV4Input"

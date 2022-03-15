@@ -186,7 +186,6 @@ class MainActivity : AppCompatActivity(), ChatKitV4ListCallback, ChatKitV4InputC
         lifecycleScope.launch {
             binding.chatKitV4.initializeChatKitV4ViewModel(chatKitV4ViewModel)
         }
-
     }
 
     private fun setupSimpleStorage(savedInstanceState: Bundle?) {
